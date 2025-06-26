@@ -1,74 +1,123 @@
-<div class="flex justify-between items-center mb-6">
-    <h2 class="text-3xl font-bold text-[var(--admin-primary-light)]">Daftar Nasabah</h2>
-    <button id="open-add-nasabah-modal"
-        class="bg-[var(--admin-primary-light)] text-white px-5 py-2 rounded-lg shadow-md hover:bg-emerald-700 transition-colors flex items-center">
-        <i class="fas fa-plus mr-2"></i> Tambah Nasabah
-    </button>
-</div>
+    <!-- Page Header -->
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl lg:text-4xl font-extrabold text-[var(--admin-primary-dark)]">Daftar Nasabah</h2>
+        <button id="open-add-nasabah-modal"
+            class="bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 transition-all duration-300 ease-in-out flex items-center font-semibold text-sm lg:text-base transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-75">
+            <i class="fas fa-plus mr-2"></i> Tambah Nasabah
+        </button>
+    </div>
 
-<div
-    class="bg-[var(--admin-surface-white)] p-6 rounded-lg shadow-md border border-[var(--admin-border-light)] table-container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama Lengkap</th>
-                <th>Email</th>
-                <th>No. HP</th>
-                <th>NIK</th>
-                <th>Status</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="border-b border-[var(--admin-border-light)]">
-                <td>1001</td>
-                <td>Budi Santoso</td>
-                <td>budi.s@example.com</td>
-                <td>081234567890</td>
-                <td>3304xxxxxxxxxx123</td>
-                <td><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
-                </td>
-                <td>
-                    <button class="text-blue-600 hover:text-blue-800 mr-2" title="Detail"><i
-                            class="fas fa-eye"></i></button>
-                    <button class="text-yellow-600 hover:text-yellow-800 mr-2" title="Edit"><i
-                            class="fas fa-edit"></i></button>
-                    <button class="text-red-600 hover:text-red-800" title="Hapus"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr class="border-b border-[var(--admin-border-light)]">
-                <td>1002</td>
-                <td>Siti Aminah</td>
-                <td>siti.a@example.com</td>
-                <td>085678901234</td>
-                <td>3304xxxxxxxxxx456</td>
-                <td><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
-                </td>
-                <td>
-                    <button class="text-blue-600 hover:text-blue-800 mr-2" title="Detail"><i
-                            class="fas fa-eye"></i></button>
-                    <button class="text-yellow-600 hover:text-yellow-800 mr-2" title="Edit"><i
-                            class="fas fa-edit"></i></button>
-                    <button class="text-red-600 hover:text-red-800" title="Hapus"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr class="border-b border-[var(--admin-border-light)]">
-                <td>1003</td>
-                <td>Joko Susilo</td>
-                <td>joko.s@example.com</td>
-                <td>087890123456</td>
-                <td>3304xxxxxxxxxx789</td>
-                <td><span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Nonaktif</span>
-                </td>
-                <td>
-                    <button class="text-blue-600 hover:text-blue-800 mr-2" title="Detail"><i
-                            class="fas fa-eye"></i></button>
-                    <button class="text-yellow-600 hover:text-yellow-800 mr-2" title="Edit"><i
-                            class="fas fa-edit"></i></button>
-                    <button class="text-red-600 hover:text-red-800" title="Hapus"><i class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Filter and Search Section -->
+    <div class="bg-[var(--admin-surface-white)] p-6 rounded-xl shadow-xl border border-[var(--admin-border-light)] mb-8">
+        <div class="mb-4 flex flex-col md:flex-row gap-4 items-center">
+            <input type="text" placeholder="Cari nama, email, NIK, atau nomor HP..."
+                class="flex-grow w-full md:w-auto p-3 border border-gray-300 rounded-lg focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)] transition-all duration-200 text-[var(--admin-text-dark)] placeholder-[var(--admin-text-secondary)]">
+            <select
+                class="w-full md:w-auto p-3 border border-gray-300 rounded-lg focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)] transition-all duration-200 text-[var(--admin-text-dark)]">
+                <option value="">Semua Status</option>
+                <option value="aktif">Aktif</option>
+                <option value="nonaktif">Nonaktif</option>
+                <option value="verifikasi_tertunda">Verifikasi Tertunda</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Nasabah List Table -->
+    <div class="bg-[var(--admin-surface-white)] p-6 rounded-xl shadow-xl border border-[var(--admin-border-light)] overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">ID</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nama Lengkap</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Email</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider whitespace-nowrap">No. HP</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">NIK</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider rounded-tr-lg">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition-colors duration-150">
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">1001</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Budi Santoso</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">budi.s@example.com</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">081234567890</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">3304xxxxxxxxxx123</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <button class="text-blue-600 hover:text-blue-800 mr-2 transition-colors duration-200 open-detail-nasabah-modal" title="Detail"><i
+                                    class="fas fa-eye"></i></button>
+                            <button class="text-yellow-600 hover:text-yellow-800 mr-2 transition-colors duration-200" title="Edit"><i
+                                    class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:text-red-800 transition-colors duration-200" title="Hapus"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors duration-150">
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">1002</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Siti Aminah</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">siti.a@example.com</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">085678901234</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">3304xxxxxxxxxx456</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <button class="text-blue-600 hover:text-blue-800 mr-2 transition-colors duration-200 open-detail-nasabah-modal" title="Detail"><i
+                                    class="fas fa-eye"></i></button>
+                            <button class="text-yellow-600 hover:text-yellow-800 mr-2 transition-colors duration-200" title="Edit"><i
+                                    class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:text-red-800 transition-colors duration-200" title="Hapus"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors duration-150">
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">1003</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Joko Susilo</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">joko.s@example.com</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">087890123456</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">3304xxxxxxxxxx789</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Nonaktif</span>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <button class="text-blue-600 hover:text-blue-800 mr-2 transition-colors duration-200 open-detail-nasabah-modal" title="Detail"><i
+                                    class="fas fa-eye"></i></button>
+                            <button class="text-yellow-600 hover:text-yellow-800 mr-2 transition-colors duration-200" title="Edit"><i
+                                    class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:text-red-800 transition-colors duration-200" title="Hapus"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-6 flex-col sm:flex-row space-y-4 sm:space-y-0">
+            <div class="text-sm text-[var(--admin-text-secondary)]">Menampilkan 1 sampai 10 dari 50 entri</div>
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="#"
+                    class="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-500 hover:bg-gray-100 transition-colors duration-200">
+                    <span class="sr-only">Previous</span>
+                    <i class="fas fa-chevron-left h-5 w-5"></i>
+                </a>
+                <a href="#"
+                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">1</a>
+                <a href="#"
+                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">2</a>
+                <a href="#"
+                    class="relative hidden md:inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">3</a>
+                <span
+                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700">...</span>
+                <a href="#"
+                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">5</a>
+                <a href="#"
+                    class="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-500 hover:bg-gray-100 transition-colors duration-200">
+                    <span class="sr-only">Next</span>
+                    <i class="fas fa-chevron-right h-5 w-5"></i>
+                </a>
+            </nav>
+        </div>
+    </div>
 </div>

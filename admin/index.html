@@ -31,107 +31,231 @@
             /* Dark text color */
             --admin-text-secondary: #64748b;
             /* Secondary text color */
+
+            /* Additional colors for dashboard cards - you can add more */
+            --card-color-1-start: #3B82F6; /* Blue 500 */
+            --card-color-1-end: #1D4ED8;   /* Blue 700 */
+            --card-color-2-start: #10B981; /* Emerald 500 */
+            --card-color-2-end: #047857;   /* Emerald 700 */
+            --card-color-3-start: #F59E0B; /* Amber 500 */
+            --card-color-3-end: #D97706;   /* Amber 700 */
+            --card-color-4-start: #EF4444; /* Red 500 */
+            --card-color-4-end: #B91C1C;   /* Red 700 */
+            --card-color-5-start: #8B5CF6; /* Violet 500 */
+            --card-color-5-end: #6D28D9;   /* Violet 700 */
+            --card-color-6-start: #EC4899; /* Pink 500 */
+            --card-color-6-end: #BE185D;   /* Pink 700 */
         }
 
         body {
             font-family: 'Poppins', sans-serif;
+            margin: 0; /* Ensure no default body margin */
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            display: flex; /* Use flexbox for overall layout */
+            flex-direction: column; /* Stack content vertically */
+        }
+
+        /* Responsive adjustments for the entire app structure */
+        #app-root {
+            display: flex; /* Makes sidebar and main content side-by-side */
+            width: 100%;
+            min-height: 100vh; /* Ensures app-root takes full height */
         }
 
         .sidebar {
             width: 260px;
-            background-color: var(--color-surface);
+            background-color: var(--admin-primary-dark);
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
             padding: 2.5rem 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: sticky;
+            position: fixed; /* Use fixed for sidebar on desktop */
             top: 0;
             left: 0;
             height: 100vh;
             overflow-y: auto;
-            z-index: 10;
+            z-index: 1000; /* Higher z-index to be on top */
+            transition: width 0.3s ease-in-out, left 0.3s ease-in-out; /* Smooth transition for mobile */
         }
 
-        /* Basic keyframes for animations */
-        @keyframes bounce {
+        .main-content {
+            margin-left: 260px; /* Offset for sidebar width */
+            flex-grow: 1;
+            transition: margin-left 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 260px); /* Adjust width to fill remaining space */
+        }
 
-            0%,
+        .sidebar.collapsed {
+            width: 80px;
+        }
+
+        .main-content.sidebar-collapsed {
+            margin-left: 80px;
+            width: calc(100% - 80px); /* Adjust width when sidebar is collapsed */
+        }
+
+        /* Custom scrollbar for sidebar */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Gaya untuk menu aktif */
+        .sidebar-nav ul li a.active-menu {
+            background-color: rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+            box-shadow: inset 5px 0 0 var(--admin-accent-gold);
+            color: white;
+        }
+
+        .sidebar-nav ul li a.active-menu .sidebar-icon {
+            color: var(--admin-accent-gold);
+        }
+
+        /* Gaya untuk sidebar yang diciutkan (collapsed) */
+        .sidebar.collapsed .sidebar-icon {
+            margin-right: 0 !important;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar.collapsed .sidebar-text {
+            display: none;
+        }
+
+        .sidebar.collapsed .sidebar-header {
+            padding: 1.5rem 0.5rem;
+        }
+
+        .sidebar.collapsed .sidebar-header .sidebar-text {
+            display: none;
+        }
+
+        .sidebar.collapsed .sidebar-header .sidebar-icon {
+            margin-right: 0;
+        }
+
+        /* Untuk tabel */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            min-width: 768px;
+            /* Pastikan tabel tidak terlalu sempit */
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--admin-border-light);
+        }
+
+        .table th {
+            background-color: var(--admin-bg-light);
+            color: var(--admin-text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table tbody tr:hover {
+            background-color: var(--admin-bg-light);
+        }
+
+        /* Animasi Skeleton Loader */
+        .skeleton-line {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
             100% {
-                transform: translateY(-25%);
-                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-            }
-
-            50% {
-                transform: none;
-                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+                background-position: -200% 0;
             }
         }
 
-        .animate-bounce {
-            animation: bounce 1s infinite;
+        /* Basic keyframes for general animations */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+            50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
         }
+        .animate-bounce { animation: bounce 1s infinite; }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: .5;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
         }
-
-        .animate-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        .animate-pulse-light {
-            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-pulse-light { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
         @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-
-        .animate-spin-slow {
-            animation: spin 5s linear infinite;
-        }
+        .animate-spin-slow { animation: spin 5s linear infinite; }
 
         @keyframes ping {
-
-            75%,
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
+            75%, 100% { transform: scale(2); opacity: 0; }
         }
-
-        .animate-ping-once {
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
-            /* Run once */
-        }
+        .animate-ping-once { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1; }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
 
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
+
+        /* Mobile styles for sidebar */
+        @media (max-width: 1023px) {
+            .sidebar {
+                left: -260px;
+                /* Hide sidebar by default on mobile */
+                width: 260px;
+                /* Full width when active */
+                box-shadow: none;
+            }
+
+            .sidebar.active-mobile {
+                left: 0;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .main-content {
+                margin-left: 0;
+                /* No margin on mobile */
+                width: 100%; /* Take full width on mobile */
+            }
+
+            .navbar-toggle-mobile {
+                display: block;
+                /* Show hamburger menu on mobile */
+            }
         }
     </style>
 </head>
@@ -153,6 +277,13 @@
             'partials/add-investasi-modal.html',
             'partials/add-ziswaf-modal.html',
             'partials/add-user-modal.html',
+            'partials/detail-nasabah-modal.html',
+            'partials/detail-rekening-modal.html',
+            'partials/detail-pembiayaan-modal.html',
+            'partials/detail-investasi-modal.html',
+            'partials/detail-ziswaf-modal.html',
+            'partials/detail-user-modal.html',
+            'partials/detail-transaksi-modal.html',
             // 'partials/edit-settings-modal.html' // Settings usually direct, but can be added if needed
         ];
 

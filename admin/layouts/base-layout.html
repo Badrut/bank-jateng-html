@@ -1,95 +1,96 @@
 <aside id="sidebar" class="sidebar">
+    <!-- Sidebar Header - Logo Bank Jateng Syariah -->
     <div
-        class="sidebar-header p-6 flex items-center justify-center text-white text-2xl font-extrabold border-b border-white/[0.05]">
-        <i class="fas fa-money-check-alt text-[var(--admin-accent-gold)] mr-3 sidebar-icon"></i>
-        <span class="sidebar-text">Admin Panel</span>
+        class="sidebar-header py-4 flex items-center justify-center border-b border-white/[0.05]">
+        <img src="https://syariah.bankjateng.co.id/media/LOGO_SYARIAH-04.png" alt="Bank Jateng Syariah Logo"
+            class="h-28 object-contain sidebar-logo transition-all duration-300 ease-in-out">
     </div>
 
     <nav class="sidebar-nav mt-8">
-        <ul>
-            <li>
+        <ul class="space-y-2">
+            <li class="px-4"> <!-- Padding for the list item itself -->
                 <a href="#dashboard"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="dashboard">
                     <i class="fas fa-tachometer-alt text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Dashboard</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#nasabah"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="nasabah-index">
                     <i class="fas fa-users text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Manajemen Nasabah</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#rekening"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="rekening-index">
                     <i class="fas fa-university text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Manajemen Rekening</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#pembiayaan"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="pembiayaan-index">
                     <i class="fas fa-hand-holding-usd text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Manajemen Pembiayaan</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#investasi"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="investasi-index">
                     <i class="fas fa-chart-line text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Manajemen Investasi</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#transaksi"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="transaksi-index">
                     <i class="fas fa-exchange-alt text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Riwayat Transaksi</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#nisbah"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="nisbah-index">
                     <i class="fas fa-percent text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Nisbah & Bagi Hasil</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#notifikasi"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="notifikasi-index">
                     <i class="fas fa-bell text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Notifikasi & Pesan</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#zakat_infaq"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="zakat-infaq-index">
                     <i class="fas fa-hand-holding-heart text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Zakat & Infaq</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#users_management"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="users-management-index">
                     <i class="fas fa-user-shield text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Manajemen Pengguna</span>
                 </a>
             </li>
-            <li>
+            <li class="px-4">
                 <a href="#settings"
-                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 pl-4 pr-2 rounded-lg w-full hover:bg-white hover:text-[var(--admin-primary-dark)] transition-all duration-300 ease-in-out"
                     data-page="settings-index">
                     <i class="fas fa-cogs text-lg mr-4 sidebar-icon"></i>
                     <span class="sidebar-text">Pengaturan</span>
@@ -99,9 +100,11 @@
     </nav>
 </aside>
 
-<div id="main-content" class="main-content flex flex-col w-full  max-w-[1880px]">
+<!-- Main Content Area -->
+<div id="main-content" class="main-content flex flex-col flex-grow">
+    <!-- Header -->
     <header
-        class="bg-[var(--admin-surface-white)] shadow-sm py-4 px-6 sm:px-8 flex items-center justify-between border-b border-[var(--admin-border-light)] sticky top-0 z-50" >
+        class="bg-[var(--admin-bg-light)] shadow-sm py-4 px-6 sm:px-8 flex items-center justify-between border-b border-[var(--admin-border-light)] sticky top-0 z-50">
         <div class="flex items-center">
             <button id="sidebar-toggle"
                 class="text-[var(--admin-text-secondary)] hover:text-[var(--admin-primary-light)] focus:outline-none hidden lg:block mr-4">
@@ -114,30 +117,133 @@
             <h1 id="page-title" class="text-2xl font-semibold text-[var(--admin-text-dark)]">Dashboard</h1>
         </div>
 
-        <div class="flex items-center space-x-4">
-            <div class="relative">
+        <div class="flex items-center space-x-2 sm:space-x-4">
+            <div class="relative hidden sm:block"> <!-- Hide search on very small screens -->
                 <input type="text" placeholder="Cari..."
-                    class="py-2 pl-10 pr-4 rounded-full border border-[var(--admin-border-light)] focus:border-[var(--admin-primary-light)] focus:ring focus:ring-[var(--admin-primary-light)] focus:ring-opacity-50">
+                    class="py-2 pl-10 pr-4 rounded-lg border border-[var(--admin-border-light)] focus:border-[var(--admin-primary-light)] focus:ring focus:ring-[var(--admin-primary-light)] focus:ring-opacity-50 text-[var(--admin-text-dark)] placeholder-[var(--admin-text-secondary)]">
                 <i
                     class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[var(--admin-text-secondary)]"></i>
             </div>
-            <button class="text-[var(--admin-text-secondary)] hover:text-[var(--admin-primary-light)] text-xl relative">
-                <i class="fas fa-bell"></i>
+            
+            <!-- Notification Icon with white circle background -->
+            <button class="relative w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-[var(--admin-text-secondary)] hover:bg-gray-100 transition-colors duration-200">
+                <i class="fas fa-bell text-xl"></i>
                 <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">3</span>
             </button>
-            <div class="flex items-center cursor-pointer group">
-                <img src="https://via.placeholder.com/40" alt="Admin Avatar"
-                    class="w-10 h-10 rounded-full border-2 border-[var(--admin-primary-light)]">
-                <span class="ml-2 font-medium text-[var(--admin-text-dark)] hidden md:block">Admin BJS</span>
-                <i class="fas fa-chevron-down text-xs ml-2 text-[var(--admin-text-secondary)]"></i>
-            </div>
-            <button class="text-[var(--admin-text-secondary)] hover:text-red-500 text-xl" title="Logout">
-                <i class="fas fa-sign-out-alt"></i>
+
+            <!-- Settings Icon with white circle background -->
+            <button class="relative w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-[var(--admin-text-secondary)] hover:bg-gray-100 transition-colors duration-200">
+                <i class="fas fa-cog text-xl"></i>
             </button>
+
+            <!-- Profile Dropdown -->
+            <div class="relative" id="profile-dropdown-wrapper">
+                <div class="flex items-center cursor-pointer" id="profile-trigger">
+                    <img src="https://via.placeholder.com/40" alt="Admin Avatar"
+                        class="w-10 h-10 rounded-full border-2 border-[var(--admin-primary-light)]">
+                    <i class="fas fa-chevron-down text-xs ml-2 text-[var(--admin-text-secondary)] transition-transform duration-200" id="profile-arrow"></i>
+                </div>
+                <!-- Dropdown content -->
+                <div id="profile-dropdown-content" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden transition-all duration-300 ease-in-out origin-top-right transform scale-95 opacity-0">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showNotification('Navigasi ke pengaturan profil', 'info'); toggleProfileDropdown(false); return false;">
+                        <i class="fas fa-user-circle mr-2"></i>Profil Saya
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="showNotification('Navigasi ke pengaturan aplikasi', 'info'); toggleProfileDropdown(false); return false;">
+                        <i class="fas fa-sliders-h mr-2"></i>Pengaturan
+                    </a>
+                    <div class="border-t border-gray-100"></div>
+                    <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 hover:font-semibold transition-all duration-300 ease-in-out" onclick="showNotification('Anda telah logout.', 'info'); toggleProfileDropdown(false); return false;">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main id="content-container" class="p-6 sm:p-8 flex-grow bg-[var(--admin-bg-light)]">
+    <!-- Main Content Area - This is where page content (e.g., dashboard, nasabah) will be loaded -->
+    <main id="content-container" class="p-6 sm:p-8 flex-grow bg-[var(--admin-bg-light)] container mx-auto xl:max-w-7xl">
+        <!-- Dashboard Content Placeholder (Example structure for responsive, colorful cards) -->
+        <div id="dashboard-content" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+            <!-- Example Card 1: Total Nasabah -->
+            <div class="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-xl
+                        transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Total Nasabah</h3>
+                    <i class="fas fa-users text-3xl opacity-75"></i>
+                </div>
+                <p class="text-4xl font-bold">12,345</p>
+                <p class="text-sm opacity-90 mt-2">+5% dari bulan lalu</p>
+            </div>
+
+            <!-- Example Card 2: Total Rekening -->
+            <div class="bg-gradient-to-br from-green-500 to-green-700 text-white p-6 rounded-xl shadow-xl
+                        transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Total Rekening</h3>
+                    <i class="fas fa-university text-3xl opacity-75"></i>
+                </div>
+                <p class="text-4xl font-bold">25,678</p>
+                <p class="text-sm opacity-90 mt-2">+3% dari bulan lalu</p>
+            </div>
+
+            <!-- Example Card 3: Dana Kelolaan -->
+            <div class="bg-gradient-to-br from-yellow-500 to-yellow-700 text-white p-6 rounded-xl shadow-xl
+                        transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Dana Kelolaan</h3>
+                    <i class="fas fa-wallet text-3xl opacity-75"></i>
+                </div>
+                <p class="text-4xl font-bold">Rp 500 M</p>
+                <p class="text-sm opacity-90 mt-2">+8% YTD</p>
+            </div>
+
+            <!-- Example Card 4: Outstanding Pembiayaan -->
+            <div class="bg-gradient-to-br from-red-500 to-red-700 text-white p-6 rounded-xl shadow-xl
+                        transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Outstanding Pembiayaan</h3>
+                    <i class="fas fa-hand-holding-usd text-3xl opacity-75"></i>
+                </div>
+                <p class="text-4xl font-bold">Rp 300 M</p>
+                <p class="text-sm opacity-90 mt-2">-2% dari bulan lalu</p>
+            </div>
+
+            <!-- Example Card 5: Investasi Aktif -->
+            <div class="bg-gradient-to-br from-purple-500 to-purple-700 text-white p-6 rounded-xl shadow-xl
+                        transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Investasi Aktif</h3>
+                    <i class="fas fa-chart-line text-3xl opacity-75"></i>
+                </div>
+                <p class="text-4xl font-bold">500</p>
+                <p class="text-sm opacity-90 mt-2">Produk investasi aktif</p>
+            </div>
+
+            <!-- Example Card 6: Total ZISWAF Terkumpul -->
+            <div class="bg-gradient-to-br from-pink-500 to-pink-700 text-white p-6 rounded-xl shadow-xl
+                        transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Total ZISWAF Terkumpul</h3>
+                    <i class="fas fa-hand-holding-heart text-3xl opacity-75"></i>
+                </div>
+                <p class="text-4xl font-bold">Rp 120 Jt</p>
+                <p class="text-sm opacity-90 mt-2">Tahun ini</p>
+            </div>
+
+            <!-- Add more cards as needed following this pattern -->
+        </div>
+
+        <!-- Charts Section (if any, adjust grid/layout similarly) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-[var(--admin-surface-white)] p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold text-[var(--admin-text-dark)] mb-4">Distribusi Produk</h3>
+                <canvas id="productDistributionChart"></canvas>
+            </div>
+            <div class="bg-[var(--admin-surface-white)] p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold text-[var(--admin-text-dark)] mb-4">Tren Pembiayaan</h3>
+                <canvas id="loanTrendChart"></canvas>
+            </div>
+        </div>
     </main>
 </div>
 
@@ -159,14 +265,23 @@
         width: 80px;
     }
 
+    /* Adjust logo when sidebar is collapsed */
+    .sidebar.collapsed .sidebar-logo {
+        height: 40px; /* Smaller height for collapsed logo */
+    }
+
     .main-content {
         margin-left: 250px;
         transition: margin-left 0.3s ease-in-out;
         flex-grow: 1;
+        display: flex; /* Ensure main-content is flex container */
+        flex-direction: column; /* Stack header and main vertically */
+        width: calc(100% - 250px); /* Fill remaining width */
     }
 
     .main-content.sidebar-collapsed {
         margin-left: 80px;
+        width: calc(100% - 80px); /* Adjust width when sidebar is collapsed */
     }
 
     /* Custom scrollbar for sidebar */
@@ -188,16 +303,29 @@
         background: rgba(255, 255, 255, 0.3);
     }
 
-    /* Gaya untuk menu aktif */
+    /* Gaya untuk menu aktif dan hover */
+    .sidebar-nav ul li a {
+        /* Default padding will be handled by pl-4 pr-2 etc. */
+    }
+
     .sidebar-nav ul li a.active-menu {
-        background-color: rgba(255, 255, 255, 0.15);
+        background-color: white;
         font-weight: 600;
         box-shadow: inset 5px 0 0 var(--admin-accent-gold);
-        color: white;
+        color: var(--admin-primary-dark);
     }
 
     .sidebar-nav ul li a.active-menu .sidebar-icon {
-        color: var(--admin-accent-gold);
+        color: var(--admin-primary-dark);
+    }
+
+    .sidebar-nav ul li a:hover:not(.active-menu) {
+        background-color: white;
+        color: var(--admin-primary-dark);
+    }
+
+    .sidebar-nav ul li a:hover:not(.active-menu) .sidebar-icon {
+        color: var(--admin-primary-dark);
     }
 
     /* Gaya untuk sidebar yang diciutkan (collapsed) */
@@ -215,14 +343,6 @@
         padding: 1.5rem 0.5rem;
     }
 
-    .sidebar.collapsed .sidebar-header .sidebar-text {
-        display: none;
-    }
-
-    .sidebar.collapsed .sidebar-header .sidebar-icon {
-        margin-right: 0;
-    }
-
     /* Untuk tabel */
     .table-container {
         overflow-x: auto;
@@ -231,7 +351,6 @@
     .table {
         width: 100%;
         min-width: 768px;
-        /* Pastikan tabel tidak terlalu sempit */
         border-collapse: collapse;
     }
 
@@ -271,6 +390,44 @@
         }
     }
 
+    /* Basic keyframes for general animations */
+    @keyframes bounce {
+        0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+        50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+    }
+    .animate-bounce { animation: bounce 1s infinite; }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .5; }
+    }
+    .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    .animate-pulse-light { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow { animation: spin 5s linear infinite; }
+
+    @keyframes ping {
+        75%, 100% { transform: scale(2); opacity: 0; }
+    }
+    .animate-ping-once { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; } /* Quick fade for dropdown */
+
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+    .animate-fade-out { animation: fadeOut 0.3s ease-out forwards; }
+
+
     /* Mobile styles for sidebar */
     @media (max-width: 1023px) {
         .sidebar {
@@ -289,6 +446,7 @@
         .main-content {
             margin-left: 0;
             /* No margin on mobile */
+            width: 100%; /* Take full width on mobile */
         }
 
         .navbar-toggle-mobile {

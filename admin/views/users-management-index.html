@@ -1,116 +1,135 @@
-<div class="flex justify-between items-center mb-6">
-    <h2 class="text-3xl font-bold text-[var(--admin-primary-light)]">Manajemen Pengguna Sistem</h2>
-    <button id="open-add-user-modal"
-        class="bg-[var(--admin-primary-light)] text-white px-5 py-2 rounded-lg shadow-md hover:bg-emerald-700 transition-colors flex items-center">
-        <i class="fas fa-user-plus mr-2"></i> Tambah Pengguna Baru
-    </button>
-</div>
-
-<div class="bg-[var(--admin-surface-white)] p-6 rounded-lg shadow-md border border-[var(--admin-border-light)] mb-6">
-    <div class="mb-4 flex flex-col md:flex-row gap-4">
-        <input type="text" placeholder="Cari nama, email, atau peran..."
-            class="flex-grow p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
-        <select
-            class="p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
-            <option value="">Semua Peran</option>
-            <option value="super_admin">Super Admin</option>
-            <option value="admin_keuangan">Admin Keuangan</option>
-            <option value="admin_nasabah">Admin Nasabah</option>
-            <option value="officer_pembiayaan">Officer Pembiayaan</option>
-        </select>
-        <select
-            class="p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
-            <option value="">Semua Status</option>
-            <option value="aktif">Aktif</option>
-            <option value="nonaktif">Nonaktif</option>
-        </select>
+    <!-- Page Header -->
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl lg:text-4xl font-extrabold text-[var(--admin-primary-dark)]">Manajemen Pengguna Sistem</h2>
+        <button id="open-add-user-modal"
+            class="bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-red-700 transition-all duration-300 ease-in-out flex items-center font-semibold text-sm lg:text-base transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-75">
+            <i class="fas fa-user-plus mr-2"></i> Tambah Pengguna Baru
+        </button>
     </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID Pengguna</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Peran</th>
-                <th>Status</th>
-                <th>Terakhir Login</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="border-b border-[var(--admin-border-light)]">
-                <td>USR001</td>
-                <td>Rudi Hartono</td>
-                <td>rudi.h@bjs.co.id</td>
-                <td>Super Admin</td>
-                <td><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
-                </td>
-                <td class="whitespace-nowrap">2025-06-25 09:30</td>
-                <td>
-                    <button class="text-blue-600 hover:text-blue-800 mr-2" title="Detail"><i
-                            class="fas fa-eye"></i></button>
-                    <button class="text-yellow-600 hover:text-yellow-800 mr-2" title="Edit"><i
-                            class="fas fa-edit"></i></button>
-                    <button class="text-red-600 hover:text-red-800" title="Nonaktifkan"><i
-                            class="fas fa-user-slash"></i></button>
-                </td>
-            </tr>
-            <tr class="border-b border-[var(--admin-border-light)]">
-                <td>USR002</td>
-                <td>Dewi Kusuma</td>
-                <td>dewi.k@bjs.co.id</td>
-                <td>Admin Keuangan</td>
-                <td><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
-                </td>
-                <td class="whitespace-nowrap">2025-06-24 14:00</td>
-                <td>
-                    <button class="text-blue-600 hover:text-blue-800 mr-2" title="Detail"><i
-                            class="fas fa-eye"></i></button>
-                    <button class="text-yellow-600 hover:text-yellow-800 mr-2" title="Edit"><i
-                            class="fas fa-edit"></i></button>
-                    <button class="text-red-600 hover:text-red-800" title="Nonaktifkan"><i
-                            class="fas fa-user-slash"></i></button>
-                </td>
-            </tr>
-            <tr class="border-b border-[var(--admin-border-light)]">
-                <td>USR003</td>
-                <td>Bambang Setyawan</td>
-                <td>bambang.s@bjs.co.id</td>
-                <td>Officer Pembiayaan</td>
-                <td><span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Nonaktif</span>
-                </td>
-                <td class="whitespace-nowrap">2025-06-10 10:00</td>
-                <td>
-                    <button class="text-blue-600 hover:text-blue-800 mr-2" title="Detail"><i
-                            class="fas fa-eye"></i></button>
-                    <button class="text-yellow-600 hover:text-yellow-800 mr-2" title="Aktifkan"><i
-                            class="fas fa-user-check"></i></button>
-                    <button class="text-red-600 hover:text-red-800" title="Hapus Permanen"><i
-                            class="fas fa-trash"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="flex justify-between items-center mt-6">
-        <div class="text-sm text-[var(--admin-text-secondary)]">Menampilkan 1 sampai 10 dari 30 entri</div>
-        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-            <a href="#"
-                class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-500 hover:bg-gray-50">
-                <span class="sr-only">Previous</span>
-                <i class="fas fa-chevron-left h-5 w-5"></i>
-            </a>
-            <a href="#"
-                class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
-            <a href="#"
-                class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
-            <a href="#"
-                class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
-            <a href="#"
-                class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-500 hover:bg-gray-50">
-                <span class="sr-only">Next</span>
-                <i class="fas fa-chevron-right h-5 w-5"></i>
-            </a>
-        </nav>
+    <!-- Filter and Search Section -->
+    <div class="bg-[var(--admin-surface-white)] p-6 rounded-xl shadow-xl border border-[var(--admin-border-light)] mb-8">
+        <div class="mb-4 flex flex-col md:flex-row gap-4 items-center">
+            <input type="text" placeholder="Cari nama, email, atau peran..."
+                class="flex-grow w-full md:w-auto p-3 border border-gray-300 rounded-lg focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)] transition-all duration-200 text-[var(--admin-text-dark)] placeholder-[var(--admin-text-secondary)]">
+            <select
+                class="w-full md:w-auto p-3 border border-gray-300 rounded-lg focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)] transition-all duration-200 text-[var(--admin-text-dark)]">
+                <option value="">Semua Peran</option>
+                <option value="super_admin">Super Admin</option>
+                <option value="admin_keuangan">Admin Keuangan</option>
+                <option value="admin_nasabah">Admin Nasabah</option>
+                <option value="officer_pembiayaan">Officer Pembiayaan</option>
+                <option value="direktur">Direktur</option>
+                <option value="manajer_operasional">Manajer Operasional</option>
+                <option value="officer_zakat">Officer Zakat & Infaq</option>
+                <option value="teller">Teller</option>
+                <option value="customer_service">Customer Service</option>
+            </select>
+            <select
+                class="w-full md:w-auto p-3 border border-gray-300 rounded-lg focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)] transition-all duration-200 text-[var(--admin-text-dark)]">
+                <option value="">Semua Status</option>
+                <option value="aktif">Aktif</option>
+                <option value="nonaktif">Nonaktif</option>
+                <option value="menunggu_aktivasi">Menunggu Aktivasi</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- User List Table -->
+    <div class="bg-[var(--admin-surface-white)] p-6 rounded-xl shadow-xl border border-[var(--admin-border-light)] overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">ID Pengguna</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nama</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Email</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Peran</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider whitespace-nowrap">Terakhir Login</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider rounded-tr-lg">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition-colors duration-150">
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">USR001</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Rudi Hartono</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">rudi.h@bjs.co.id</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Super Admin</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-secondary)] text-sm">2025-06-25 09:30</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <button class="text-blue-600 hover:text-blue-800 mr-2 transition-colors duration-200 open-detail-user-modal" title="Detail"><i
+                                    class="fas fa-eye"></i></button>
+                            <button class="text-yellow-600 hover:text-yellow-800 mr-2 transition-colors duration-200" title="Edit"><i
+                                    class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:text-red-800 transition-colors duration-200" title="Nonaktifkan"><i
+                                    class="fas fa-user-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors duration-150">
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">USR002</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Dewi Kusuma</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">dewi.k@bjs.co.id</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Admin Keuangan</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Aktif</span>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-secondary)] text-sm">2025-06-24 14:00</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <button class="text-blue-600 hover:text-blue-800 mr-2 transition-colors duration-200 open-detail-user-modal" title="Detail"><i
+                                    class="fas fa-eye"></i></button>
+                            <button class="text-yellow-600 hover:text-yellow-800 mr-2 transition-colors duration-200" title="Edit"><i
+                                    class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:text-red-800 transition-colors duration-200" title="Nonaktifkan"><i
+                                    class="fas fa-user-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition-colors duration-150">
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">USR003</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Bambang Setyawan</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">bambang.s@bjs.co.id</td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-dark)]">Officer Pembiayaan</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">Nonaktif</span>
+                        </td>
+                        <td class="py-3 px-4 whitespace-nowrap text-[var(--admin-text-secondary)] text-sm">2025-06-10 10:00</td>
+                        <td class="py-3 px-4 whitespace-nowrap">
+                            <button class="text-blue-600 hover:text-blue-800 mr-2 transition-colors duration-200 open-detail-user-modal" title="Detail"><i
+                                    class="fas fa-eye"></i></button>
+                            <button class="text-yellow-600 hover:text-yellow-800 mr-2 transition-colors duration-200" title="Aktifkan"><i
+                                    class="fas fa-user-check"></i></button>
+                            <button class="text-red-600 hover:text-red-800 transition-colors duration-200" title="Hapus Permanen"><i
+                                    class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-6 flex-col sm:flex-row space-y-4 sm:space-y-0">
+            <div class="text-sm text-[var(--admin-text-secondary)]">Menampilkan 1 sampai 10 dari 30 entri</div>
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="#"
+                    class="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-500 hover:bg-gray-100 transition-colors duration-200">
+                    <span class="sr-only">Previous</span>
+                    <i class="fas fa-chevron-left h-5 w-5"></i>
+                </a>
+                <a href="#"
+                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">1</a>
+                <a href="#"
+                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">2</a>
+                <a href="#"
+                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200">3</a>
+                <a href="#"
+                    class="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-[var(--admin-surface-white)] text-sm font-medium text-gray-500 hover:bg-gray-100 transition-colors duration-200">
+                    <span class="sr-only">Next</span>
+                    <i class="fas fa-chevron-right h-5 w-5"></i>
+                </a>
+            </nav>
+        </div>
     </div>
 </div>

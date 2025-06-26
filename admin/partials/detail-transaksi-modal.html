@@ -1,0 +1,55 @@
+<div id="detail-transaksi-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-2xl overflow-y-auto max-h-[90vh]">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]">Detail Riwayat Transaksi</h2>
+        
+        <div class="space-y-6">
+            <fieldset class="p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Informasi Transaksi</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Transaksi</label>
+                        <p id="detail_id_transaksi" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tanggal & Waktu</label>
+                        <p id="detail_tanggal_transaksi" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis Transaksi</label>
+                        <p id="detail_jenis_transaksi" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Sumber/Tujuan</label>
+                        <p id="detail_sumber_tujuan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nominal</label>
+                        <p id="detail_nominal_transaksi" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Status</label>
+                        <p id="detail_status_transaksi" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Deskripsi</label>
+                        <p id="detail_deskripsi_transaksi" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <!-- Tambahkan field lain jika ada, contoh: -->
+                    <!-- <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Nasabah</label>
+                        <p id="detail_id_nasabah_transaksi" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nomor Rekening</label>
+                        <p id="detail_nomor_rekening_transaksi" class="text-[var(--admin-text-dark)]"></p>
+                    </div> -->
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="flex justify-end mt-6">
+            <button type="button" id="close-detail-transaksi-modal"
+                class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Tutup</button>
+        </div>
+    </div>
+</div>

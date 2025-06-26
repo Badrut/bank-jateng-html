@@ -1,0 +1,76 @@
+<div id="detail-pembiayaan-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-2xl overflow-y-auto max-h-[90vh]">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]">Detail Pembiayaan</h2>
+        
+        <div class="space-y-6">
+            <fieldset class="p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Data Nasabah & Pembiayaan</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Pembiayaan</label>
+                        <p id="detail_id_pembiayaan" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Nasabah / NIK</label>
+                        <p id="detail_nasabah_id_pembiayaan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama Nasabah</label>
+                        <p id="detail_nama_nasabah_pembiayaan" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis Pembiayaan</label>
+                        <p id="detail_jenis_pembiayaan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Akad Pembiayaan</label>
+                        <p id="detail_akad_pembiayaan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jumlah Pembiayaan Diajukan</label>
+                        <p id="detail_jumlah_pembiayaan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tenor (Bulan)</label>
+                        <p id="detail_tenor_pembiayaan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tujuan Pembiayaan</label>
+                        <p id="detail_tujuan_pembiayaan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tanggal Pengajuan</label>
+                        <p id="detail_tanggal_pengajuan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Status Pembiayaan</label>
+                        <p id="detail_status_pembiayaan" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Informasi Jaminan & Dokumen</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis Jaminan</label>
+                        <p id="detail_jenis_jaminan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Estimasi Nilai Jaminan</label>
+                        <p id="detail_nilai_jaminan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Dokumen Pendukung</label>
+                        <p id="detail_dokumen_pendukung_pembiayaan" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="flex justify-end mt-6">
+            <button type="button" id="close-detail-pembiayaan-modal"
+                class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Tutup</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div id="detail-user-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-2xl overflow-y-auto max-h-[90vh]">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]">Detail Pengguna Sistem</h2>
+        
+        <div class="space-y-6">
+            <fieldset class="p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Informasi Pengguna</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Pengguna</label>
+                        <p id="detail_id_user" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nomor Pegawai</label>
+                        <p id="detail_nomor_pegawai_user" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama Lengkap</label>
+                        <p id="detail_nama_lengkap_user" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Email Kantor</label>
+                        <p id="detail_email_user" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Peran / Jabatan</label>
+                        <p id="detail_peran_user" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Unit Kerja / Departemen</label>
+                        <p id="detail_unit_kerja_user" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Status Akun</label>
+                        <p id="detail_status_user" class="text-[var(--admin-text-dark)] font-semibold"></p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Waktu Dibuat</label>
+                        <p id="detail_waktu_dibuat_user" class="text-[var(--admin-text-dark)]"></p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="flex justify-end mt-6">
+            <button type="button" id="close-detail-user-modal"
+                class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Tutup</button>
+        </div>
+    </div>
+</div>
