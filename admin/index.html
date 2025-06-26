@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="layout-title">Bank Jateng Syariah - Loading...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Define custom CSS variables for colors directly here */
+        :root {
+            --admin-primary-dark: #001f3f;
+            /* Dark Blue */
+            --admin-primary-light: #047857;
+            /* Dark Emerald Green (main brand color) */
+            --admin-accent-gold: #F59E0B;
+            /* Golden Yellow (accent color) */
+            --admin-text-light: #e2e8f0;
+            /* Light Gray for text on dark background */
+            --admin-bg-light: #f8fafc;
+            /* Very light background for content area */
+            --admin-surface-white: #ffffff;
+            /* Standard white for cards/surfaces */
+            --admin-border-light: #e2e8f0;
+            /* Light border color */
+            --admin-text-dark: #1e293b;
+            /* Dark text color */
+            --admin-text-secondary: #64748b;
+            /* Secondary text color */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: var(--color-surface);
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        /* Basic keyframes for animations */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+
+            50% {
+                transform: none;
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .animate-pulse-light {
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-spin-slow {
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes ping {
+
+            75%,
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .animate-ping-once {
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
+            /* Run once */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app-root"></div>
+
+    <div id="modals-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/admin.js"></script>
+
+    <script>
+        // Array of all modal partials to load
+        const modalPartials = [
+            'partials/add-nasabah-modal.html',
+            'partials/add-rekening-modal.html',
+            'partials/add-pembiayaan-modal.html',
+            'partials/add-investasi-modal.html',
+            'partials/add-ziswaf-modal.html',
+            'partials/add-user-modal.html',
+            // 'partials/edit-settings-modal.html' // Settings usually direct, but can be added if needed
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('layouts/base-layout.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('app-root').innerHTML = html;
+
+                    // Ensure all elements from base-layout are in DOM before proceeding
+                    setTimeout(() => {
+                        if (typeof initializeLayout === 'function') {
+                            initializeLayout();
+                        }
+
+                        // Load all modals sequentially or in parallel
+                        Promise.all(modalPartials.map(url => fetch(url).then(res => res.text())))
+                            .then(modalHtmls => {
+                                document.getElementById('modals-container').innerHTML = modalHtmls.join('');
+                                // Initialize all modals after they are loaded
+                                if (typeof initializeModals === 'function') {
+                                    initializeModals();
+                                }
+                                // Only load default page AFTER layout and all modals are fully set up
+                                if (typeof navigateTo === 'function') {
+                                    navigateTo('dashboard');
+                                }
+                            })
+                            .catch(error => console.error('Error loading modals:', error));
+
+                    }, 50); // Small delay to allow DOM parsing for injected HTML
+                })
+                .catch(error => {
+                    console.error('Error loading base layout:', error);
+                    document.getElementById('app-root').innerHTML = `
+                        <div class="flex flex-col items-center justify-center min-h-screen text-center bg-red-100 p-8">
+                            <h2 class="text-3xl font-bold text-red-700 mb-4">Error Memuat Aplikasi</h2>
+                            <p class="text-lg text-red-600">Terjadi kesalahan saat memuat layout utama. Pastikan file 'layouts/base-layout.html' ada dan dapat diakses.</p>
+                            <p class="text-sm text-red-500 mt-2">Detail: ${error.message}</p>
+                        </div>
+                    `;
+                    document.getElementById('layout-title').textContent = 'Error Loading App';
+                });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<div class="flex justify-between items-center mb-6">
+    <h2 class="text-3xl font-bold text-[var(--admin-primary-light)]">Pengaturan Sistem</h2>
+    <button
+        class="bg-[var(--admin-primary-light)] text-white px-5 py-2 rounded-lg shadow-md hover:bg-emerald-700 transition-colors flex items-center">
+        <i class="fas fa-save mr-2"></i> Simpan Pengaturan
+    </button>
+</div>
+
+<div class="bg-[var(--admin-surface-white)] p-6 rounded-lg shadow-md border border-[var(--admin-border-light)]">
+    <h3 class="text-xl font-bold text-[var(--admin-text-dark)] mb-4">Informasi Umum Bank</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+            <label for="nama_bank" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama
+                Bank</label>
+            <input type="text" id="nama_bank" value="PT Bank Jateng Syariah"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+        </div>
+        <div>
+            <label for="alamat_bank" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Alamat
+                Kantor Pusat</label>
+            <input type="text" id="alamat_bank" value="Jl. Protokol Utama No. 1, Semarang, Jawa Tengah"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+        </div>
+        <div>
+            <label for="email_bank" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Email
+                Bank</label>
+            <input type="email" id="email_bank" value="info@bankjatengsyariah.co.id"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+        </div>
+        <div>
+            <label for="telepon_bank" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Telepon
+                Bank</label>
+            <input type="text" id="telepon_bank" value="(024) 12345678"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+        </div>
+    </div>
+
+    <h3 class="text-xl font-bold text-[var(--admin-text-dark)] mb-4 mt-8">Pengaturan Keamanan</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+            <label for="min_pass_length"
+                class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Minimal Panjang
+                Password</label>
+            <input type="number" id="min_pass_length" value="8"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+        </div>
+        <div>
+            <label for="2fa_status" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Status
+                Autentikasi 2 Faktor</label>
+            <select id="2fa_status"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+                <option value="enabled">Diaktifkan</option>
+                <option value="disabled">Dinonaktifkan</option>
+                <option value="optional">Opsional</option>
+            </select>
+        </div>
+    </div>
+
+    <h3 class="text-xl font-bold text-[var(--admin-text-dark)] mb-4 mt-8">Pengaturan Integrasi</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <label for="api_key_status" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Status
+                API Key</label>
+            <select id="api_key_status"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+                <option value="aktif">Aktif</option>
+                <option value="nonaktif">Nonaktif</option>
+            </select>
+        </div>
+        <div>
+            <label for="payment_gateway"
+                class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Integrasi Payment
+                Gateway</label>
+            <input type="text" id="payment_gateway" value="Midtrans Syariah"
+                class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+        </div>
+    </div>
+</div>

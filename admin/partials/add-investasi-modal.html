@@ -1,0 +1,93 @@
+<div id="add-investasi-modal"
+    class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]" id="investasi-modal-title">Tambah Produk
+            Investasi</h2>
+        <form id="investasi-form">
+            <div class="mb-4">
+                <label for="nasabah_id_investasi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Nasabah / NIK</label>
+                <input type="text" id="nasabah_id_investasi" name="nasabah_id"
+                    placeholder="Cari atau masukkan ID Nasabah/NIK"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="nama_nasabah_investasi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama Nasabah</label>
+                <input type="text" id="nama_nasabah_investasi" name="nama_nasabah"
+                    class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md" readonly
+                    placeholder="Akan terisi otomatis">
+            </div>
+            <div class="mb-4">
+                <label for="jenis_investasi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis Produk
+                    Investasi</label>
+                <select id="jenis_investasi" name="jenis_investasi"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="">Pilih Jenis Investasi</option>
+                    <option value="sukuk">Sukuk (Obligasi Syariah)</option>
+                    <option value="reksadana_syariah">Reksadana Syariah</option>
+                    <option value="saham_syariah">Saham Syariah</option>
+                    <option value="deposito_mudharabah">Deposito Mudharabah</option>
+                    <option value="dana_pendidikan_syariah">Dana Pendidikan Syariah</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="akad_investasi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Akad Investasi</label>
+                <input type="text" id="akad_investasi" name="akad_investasi"
+                    class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md" readonly
+                    placeholder="Terisi otomatis berdasarkan Jenis Investasi">
+                <p class="text-xs text-gray-500 mt-1">Misal: Mudharabah, Musyarakah, Ijarah.</p>
+            </div>
+            <div class="mb-4">
+                <label for="nilai_investasi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nilai Investasi
+                    (Rp)</label>
+                <input type="number" id="nilai_investasi" name="nilai_investasi"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required min="1000000">
+            </div>
+            <div class="mb-4">
+                <label for="jangka_waktu_investasi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jangka Waktu
+                    (Bulan)</label>
+                <input type="number" id="jangka_waktu_investasi" name="jangka_waktu"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    min="0" placeholder="0 untuk tidak terbatas/terbuka">
+                <p class="text-xs text-gray-500 mt-1">Isi 0 jika tidak ada jangka waktu (misal: reksadana terbuka).</p>
+            </div>
+            <div class="mb-4">
+                <label for="tanggal_mulai_investasi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tanggal Mulai
+                    Investasi</label>
+                <input type="date" id="tanggal_mulai_investasi" name="tanggal_mulai"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="frekuensi_bagi_hasil"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Frekuensi Bagi Hasil/Imbal
+                    Hasil</label>
+                <select id="frekuensi_bagi_hasil" name="frekuensi_bagi_hasil"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+                    <option value="">Pilih Frekuensi</option>
+                    <option value="bulanan">Bulanan</option>
+                    <option value="triwulanan">Triwulanan</option>
+                    <option value="semesteran">Semesteran</option>
+                    <option value="tahunan">Tahunan</option>
+                    <option value="akhir_periode">Akhir Periode</option>
+                </select>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-investasi-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Tambah
+                    Investasi</button>
+            </div>
+        </form>
+    </div>
+</div>

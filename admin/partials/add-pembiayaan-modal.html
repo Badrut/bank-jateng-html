@@ -1,0 +1,129 @@
+<div id="add-pembiayaan-modal"
+    class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-2xl overflow-y-auto max-h-[90vh]">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]" id="pembiayaan-modal-title">Ajukan Pembiayaan
+            Baru</h2>
+        <form id="pembiayaan-form">
+            <fieldset class="mb-6 p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Data Nasabah & Pembiayaan
+                </legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="nasabah_id_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Nasabah /
+                            NIK</label>
+                        <input type="text" id="nasabah_id_pembiayaan" name="nasabah_id"
+                            placeholder="Cari atau masukkan ID Nasabah/NIK"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required>
+                    </div>
+                    <div>
+                        <label for="nama_nasabah_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama
+                            Nasabah</label>
+                        <input type="text" id="nama_nasabah_pembiayaan" name="nama_nasabah"
+                            class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md" readonly
+                            placeholder="Akan terisi otomatis">
+                    </div>
+                    <div>
+                        <label for="jenis_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis
+                            Pembiayaan</label>
+                        <select id="jenis_pembiayaan" name="jenis_pembiayaan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required>
+                            <option value="">Pilih Jenis Pembiayaan</option>
+                            <option value="murabahah">Murabahah (Jual Beli)</option>
+                            <option value="musyarakah">Musyarakah (Kerja Sama Modal)</option>
+                            <option value="mudharabah">Mudharabah (Kerja Sama Keuntungan)</option>
+                            <option value="ijarah">Ijarah (Sewa)</option>
+                            <option value="istishna">Istishna' (Pemesanan Barang)</option>
+                            <option value="qardh">Qardh (Pinjaman Kebajikan)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="akad_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Akad
+                            Pembiayaan</label>
+                        <input type="text" id="akad_pembiayaan" name="akad_pembiayaan"
+                            class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md" readonly
+                            placeholder="Terisi otomatis berdasarkan Jenis Pembiayaan">
+                        <p class="text-xs text-gray-500 mt-1">Misal: Murabahah untuk pembiayaan konsumtif.</p>
+                    </div>
+                    <div>
+                        <label for="jumlah_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jumlah Pembiayaan
+                            Diajukan (Rp)</label>
+                        <input type="number" id="jumlah_pembiayaan" name="jumlah_pembiayaan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required min="1000000">
+                    </div>
+                    <div>
+                        <label for="tenor_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tenor
+                            (Bulan)</label>
+                        <input type="number" id="tenor_pembiayaan" name="tenor_pembiayaan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required min="12" max="180">
+                        <p class="text-xs text-gray-500 mt-1">Contoh: Min 12 bulan, Max 180 bulan (15 tahun).</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="tujuan_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tujuan
+                            Pembiayaan</label>
+                        <textarea id="tujuan_pembiayaan" name="tujuan_pembiayaan" rows="2"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: Pembelian rumah, modal usaha, pendidikan" required></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-6 p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Informasi Jaminan & Lain-lain
+                </legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="jenis_jaminan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis
+                            Jaminan</label>
+                        <select id="jenis_jaminan" name="jenis_jaminan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+                            <option value="">Pilih Jaminan (jika ada)</option>
+                            <option value="tanah_bangunan">Tanah/Bangunan</option>
+                            <option value="kendaraan">Kendaraan</option>
+                            <option value="emas">Emas</option>
+                            <option value="lainnya">Lainnya</option>
+                            <option value="tanpa_jaminan">Tanpa Jaminan</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="nilai_jaminan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Estimasi Nilai
+                            Jaminan (Rp)</label>
+                        <input type="number" id="nilai_jaminan" name="nilai_jaminan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            min="0">
+                        <p class="text-xs text-gray-500 mt-1">Diisi jika ada jaminan.</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="dokumen_pendukung_pembiayaan"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Unggah Dokumen
+                            Pendukung (misal: slip gaji, SKU, SHM)</label>
+                        <input type="file" id="dokumen_pendukung_pembiayaan" name="dokumen_pendukung"
+                            accept=".pdf,image/*" multiple
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+                        <p class="text-xs text-gray-500 mt-1">Bisa lebih dari satu file (Ctrl+Klik).</p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-pembiayaan-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Ajukan
+                    Pembiayaan</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div id="add-ziswaf-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]" id="ziswaf-modal-title">Catat Penerimaan
+            ZISWAF</h2>
+        <form id="ziswaf-form">
+            <div class="mb-4">
+                <label for="jenis_ziswaf"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis ZISWAF</label>
+                <select id="jenis_ziswaf" name="jenis_ziswaf"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="">Pilih Jenis</option>
+                    <option value="zakat_fitrah">Zakat Fitrah</option>
+                    <option value="zakat_maal">Zakat Maal</option>
+                    <option value="infaq">Infaq</option>
+                    <option value="shodaqoh">Shodaqoh</option>
+                    <option value="wakaf_uang">Wakaf Uang</option>
+                    <option value="wakaf_aset">Wakaf Aset</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="nama_muzakki_donatur"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama
+                    Muzakki/Donatur</label>
+                <input type="text" id="nama_muzakki_donatur" name="nama_muzakki_donatur"
+                    placeholder="Nama Lengkap Muzakki/Donatur"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="nominal_ziswaf"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nominal (Rp)</label>
+                <input type="number" id="nominal_ziswaf" name="nominal_ziswaf"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required min="0">
+            </div>
+            <div class="mb-4">
+                <label for="sumber_dana_ziswaf"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Sumber Dana ZISWAF</label>
+                <input type="text" id="sumber_dana_ziswaf" name="sumber_dana_ziswaf"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    placeholder="Contoh: Penghasilan usaha, tabungan" required>
+                <p class="text-xs text-gray-500 mt-1">Penjelasan asal dana untuk transparansi.</p>
+            </div>
+            <div class="mb-4">
+                <label for="tujuan_ziswaf"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tujuan Penyaluran (jika
+                    spesifik)</label>
+                <textarea id="tujuan_ziswaf" name="tujuan_ziswaf" rows="2"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    placeholder="Contoh: Pembangunan masjid, beasiswa yatim"></textarea>
+                <p class="text-xs text-gray-500 mt-1">Jika donatur memiliki tujuan khusus, catat di sini.</p>
+            </div>
+            <div class="mb-4">
+                <label for="tanggal_penerimaan_ziswaf"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tanggal Penerimaan</label>
+                <input type="date" id="tanggal_penerimaan_ziswaf" name="tanggal_penerimaan"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-ziswaf-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Catat
+                    Penerimaan</button>
+            </div>
+        </form>
+    </div>
+</div>

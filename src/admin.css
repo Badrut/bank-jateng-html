@@ -1,0 +1,56 @@
+/* src/admin.css */
+
+/* Contoh: untuk memastikan icon dan text sidebar tetap center saat collapsed */
+.sidebar.collapsed .sidebar-icon {
+    margin-right: 0 !important; /* Override Tailwind's mr-4 */
+    width: 100%;
+    text-align: center;
+}
+.sidebar.collapsed .sidebar-text {
+    display: none;
+}
+.sidebar.collapsed .sidebar-header {
+    padding: 1.5rem 0.5rem; /* Adjust padding for icon-only header */
+}
+.sidebar.collapsed .sidebar-header .sidebar-text {
+    display: none;
+}
+.sidebar.collapsed .sidebar-header .sidebar-icon {
+    margin-right: 0;
+}
+
+/* Gaya untuk menu aktif */
+.sidebar-nav ul li a.active-menu {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly darker for active */
+    font-weight: 600;
+    box-shadow: inset 5px 0 0 var(--admin-accent-gold); /* Yellow stripe */
+    color: white; /* Ensure text is white */
+}
+.sidebar-nav ul li a.active-menu .sidebar-icon {
+    color: var(--admin-accent-gold); /* Yellow icon for active */
+}
+
+/* Untuk tabel */
+.table-container {
+    overflow-x: auto;
+}
+.table {
+    width: 100%;
+    min-width: 768px; /* Minimum width for table on smaller screens */
+    border-collapse: collapse;
+}
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--admin-border-light);
+}
+.table th {
+    background-color: var(--admin-bg-light);
+    color: var(--admin-text-secondary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.table tbody tr:hover {
+    background-color: var(--admin-bg-light);
+}

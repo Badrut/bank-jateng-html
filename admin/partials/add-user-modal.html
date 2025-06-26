@@ -1,0 +1,88 @@
+<div id="add-user-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]" id="user-modal-title">Tambah Pengguna Sistem
+            Baru</h2>
+        <form id="user-form">
+            <div class="mb-4">
+                <label for="nama_lengkap_user"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama Lengkap</label>
+                <input type="text" id="nama_lengkap_user" name="nama_lengkap"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="email_user" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Email
+                    Kantor</label>
+                <input type="email" id="email_user" name="email"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    placeholder="nama.pegawai@bjs.co.id" required>
+            </div>
+            <div class="mb-4">
+                <label for="nomor_pegawai"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nomor Pegawai</label>
+                <input type="text" id="nomor_pegawai" name="nomor_pegawai"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required placeholder="Contoh: BJS-00123">
+            </div>
+            <div class="mb-4">
+                <label for="password_user"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Password Awal</label>
+                <input type="password" id="password_user" name="password"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="konfirmasi_password_user"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Konfirmasi
+                    Password</label>
+                <input type="password" id="konfirmasi_password_user" name="konfirmasi_password"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="peran_user" class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Peran
+                    / Jabatan</label>
+                <select id="peran_user" name="peran"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="">Pilih Peran</option>
+                    <option value="super_admin">Super Admin</option>
+                    <option value="direktur">Direktur</option>
+                    <option value="manajer_operasional">Manajer Operasional</option>
+                    <option value="admin_keuangan">Admin Keuangan</option>
+                    <option value="admin_nasabah">Admin Nasabah</option>
+                    <option value="officer_pembiayaan">Officer Pembiayaan</option>
+                    <option value="officer_zakat">Officer Zakat & Infaq</option>
+                    <option value="teller">Teller</option>
+                    <option value="customer_service">Customer Service</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="unit_kerja_user"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Unit Kerja /
+                    Departemen</label>
+                <input type="text" id="unit_kerja_user" name="unit_kerja"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    placeholder="Contoh: Divisi Operasional" required>
+            </div>
+            <div class="mb-4">
+                <label for="status_user"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Status Akun</label>
+                <select id="status_user" name="status"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="aktif">Aktif</option>
+                    <option value="nonaktif">Nonaktif</option>
+                    <option value="menunggu_aktivasi">Menunggu Aktivasi</option>
+                </select>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-user-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Tambah
+                    Pengguna</button>
+            </div>
+        </form>
+    </div>
+</div>

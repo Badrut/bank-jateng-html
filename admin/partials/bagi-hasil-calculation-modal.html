@@ -1,0 +1,54 @@
+<div id="bagi-hasil-calculation-modal"
+    class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001] modal">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-md modal-content">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]">Hitung Bagi Hasil Periode</h2>
+        <form id="bagi-hasil-calculation-form">
+            <div class="mb-4">
+                <label for="periode_hitung"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Periode
+                    Perhitungan</label>
+                <input type="month" id="periode_hitung" name="periode_hitung"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                <p class="text-xs text-gray-500 mt-1">Pilih bulan dan tahun untuk perhitungan bagi hasil.</p>
+            </div>
+            <div class="mb-4">
+                <label for="jenis_bagi_hasil"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis Perhitungan</label>
+                <select id="jenis_bagi_hasil" name="jenis_bagi_hasil"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="">Pilih Jenis</option>
+                    <option value="nasabah_penyimpan">Bagi Hasil Nasabah Penyimpan Dana</option>
+                    <option value="pembiayaan_mudharabah_musyarakah">Bagi Hasil Pembiayaan Mudharabah/Musyarakah
+                    </option>
+                    <option value="semua">Semua Jenis</option>
+                </select>
+                <p class="text-xs text-gray-500 mt-1">Pilih jenis perhitungan bagi hasil yang akan diproses.</p>
+            </div>
+            <div class="mb-4">
+                <label for="tanggal_eksekusi"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tanggal Eksekusi</label>
+                <input type="date" id="tanggal_eksekusi" name="tanggal_eksekusi"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                <p class="text-xs text-gray-500 mt-1">Tanggal sistem akan menjalankan proses perhitungan.</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tinjauan Hasil Usaha
+                    Bank</label>
+                <p class="text-sm text-gray-700">Estimasi Laba Usaha Bank pada periode yang dipilih: <strong>Rp
+                        10.000.000.000</strong> (Data ini akan diambil dari laporan keuangan riil)</p>
+                <p class="text-xs text-gray-500 mt-1">Laba yang akan menjadi dasar perhitungan bagi hasil
+                    mudharabah/musyarakah.</p>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-bagi-hasil-calculation-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Proses
+                    Perhitungan</button>
+            </div>
+        </form>
+    </div>
+</div>

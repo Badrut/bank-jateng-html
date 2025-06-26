@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register - Amanah Syariah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Definisi Variabel Warna (Sama seperti dashboard Anda) */
+        :root {
+            --color-primary-green: #10B981;
+            /* Tailwind green-500 */
+            --color-primary-dark: #047857;
+            /* Tailwind green-700 */
+            --color-accent-gold: #F59E0B;
+            /* Tailwind amber-500 */
+            --color-text-medium: #6B7280;
+            /* Abu-abu menengah */
+            --color-text-dark: #1F2937;
+            /* Abu-abu gelap */
+            --color-bg-light: #F3F4F6;
+            /* Abu-abu sangat terang untuk background */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--color-text-dark);
+            padding: 1rem;
+            /* Padding for small screens */
+            box-sizing: border-box;
+            /* Include padding in element's total width and height */
+        }
+
+        .auth-container {
+            background-color: white;
+            border-radius: 1rem;
+            /* rounded-2xl */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            /* shadow-2xl */
+            padding: 2.5rem 2rem;
+            /* p-10 sm:p-12 */
+            width: 100%;
+            max-width: 450px;
+            /* Max width for the form */
+            text-align: center;
+            border: 1px solid #E5E7EB;
+            /* border-gray-200 */
+        }
+
+        .auth-logo {
+            font-size: 2.25rem;
+            /* text-4xl */
+            font-weight: bold;
+            color: var(--color-primary-dark);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-logo i {
+            margin-right: 0.75rem;
+            color: var(--color-primary-green);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.95rem;
+            /* text-base */
+            font-weight: 500;
+            color: var(--color-text-medium);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group .input-wrapper {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            /* Adjusted padding for icon */
+            border: 1px solid #D1D5DB;
+            /* border-gray-300 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            color: var(--color-text-dark);
+        }
+
+        .form-group input:focus {
+            border-color: var(--color-primary-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            /* green-500 with opacity */
+        }
+
+        .form-group .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-medium);
+            font-size: 1.1rem;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: var(--color-primary-green);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            transition: background-color 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.025em;
+            /* tracking-wide */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-button:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .switch-auth-link {
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--color-text-medium);
+        }
+
+        .switch-auth-link a {
+            color: var(--color-primary-green);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .switch-auth-link a:hover {
+            color: var(--color-primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Hidden class for toggling forms */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 640px) {
+
+            /* sm breakpoint */
+            .auth-container {
+                padding: 3rem 2.5rem;
+                /* sm:p-12 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-logo">
+            <i class="fas fa-hand-holding-usd"></i> <span>Amanah.</span>
+        </div>
+
+        <div id="loginForm">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-8 leading-tight">Masuk ke Akun Anda</h2>
+            <form>
+                <div class="form-group">
+                    <label for="login-username">Nama Pengguna / Email</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fas fa-user"></i>
+                        <input type="text" id="login-username" name="username"
+                            placeholder="Masukkan nama pengguna atau email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Kata Sandi</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fas fa-lock"></i>
+                        <input type="password" id="login-password" name="password"
+                            placeholder="Masukkan kata sandi Anda">
+                    </div>
+                </div>
+                <div class="text-right mb-6">
+                    <a href="#" class="text-sm font-medium text-[var(--color-primary-green)] hover:underline">Lupa Kata
+                        Sandi?</a>
+                </div>
+                
+                <button type="submit" class="submit-button"><a href="/index.html">Masuk</a></button>
+            </form>
+        </div>
+
+        <div id="registerForm" class="hidden">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-8 leading-tight">Daftar Akun Baru</h2>
+            <form action="/index.html" method="POST">
+                <div class="form-group">
+                    <label for="register-fullname">Nama Lengkap</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fas fa-user"></i>
+                        <input type="text" id="register-fullname" name="fullname"
+                            placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fas fa-envelope"></i>
+                        <input type="email" id="register-email" name="email" placeholder="Masukkan alamat email Anda"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Kata Sandi</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fas fa-lock"></i>
+                        <input type="password" id="register-password" name="password" placeholder="Buat kata sandi baru"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Konfirmasi Kata Sandi</label>
+                    <div class="input-wrapper">
+                        <i class="input-icon fas fa-lock"></i>
+                        <input type="password" id="register-confirm-password" name="confirm_password"
+                            placeholder="Konfirmasi kata sandi Anda" required>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">Daftar</button>
+            </form>
+            <p class="switch-auth-link">Sudah punya akun? <a href="/index.html" id="showLogin">Masuk</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const showRegisterLink = document.getElementById('showRegister');
+            const showLoginLink = document.getElementById('showLogin');
+
+            showRegisterLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+            });
+
+            showLoginLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                registerForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+            });
+
+            // Basic form submission prevention for demo purposes
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    window.location.href = 'http://127.0.0.1:5500/index.html'
+                    // In a real application, you would send data to backend here
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

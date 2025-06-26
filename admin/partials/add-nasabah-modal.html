@@ -1,0 +1,190 @@
+<div id="add-nasabah-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-2xl overflow-y-auto max-h-[90vh]">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]" id="nasabah-modal-title">Tambah Nasabah Baru
+        </h2>
+        <form id="nasabah-form">
+            <fieldset class="mb-6 p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Data Pribadi</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="nama_lengkap_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama Lengkap
+                            Sesuai KTP</label>
+                        <input type="text" id="nama_lengkap_nasabah" name="nama_lengkap"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: Budi Santoso" required>
+                    </div>
+                    <div>
+                        <label for="nik_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">NIK (Nomor Induk
+                            Kependudukan)</label>
+                        <input type="text" id="nik_nasabah" name="nik"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: 33xxxxxxxxxxxxxx" maxlength="16" required>
+                    </div>
+                    <div>
+                        <label for="tempat_lahir_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tempat
+                            Lahir</label>
+                        <input type="text" id="tempat_lahir_nasabah" name="tempat_lahir"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: Semarang" required>
+                    </div>
+                    <div>
+                        <label for="tanggal_lahir_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tanggal
+                            Lahir</label>
+                        <input type="date" id="tanggal_lahir_nasabah" name="tanggal_lahir"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required>
+                    </div>
+                    <div>
+                        <label for="jenis_kelamin_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis
+                            Kelamin</label>
+                        <select id="jenis_kelamin_nasabah" name="jenis_kelamin"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required>
+                            <option value="">Pilih</option>
+                            <option value="laki-laki">Laki-laki</option>
+                            <option value="perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="status_perkawinan_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Status
+                            Perkawinan</label>
+                        <select id="status_perkawinan_nasabah" name="status_perkawinan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required>
+                            <option value="">Pilih</option>
+                            <option value="belum_menikah">Belum Menikah</option>
+                            <option value="menikah">Menikah</option>
+                            <option value="cerai_hidup">Cerai Hidup</option>
+                            <option value="cerai_mati">Cerai Mati</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="nama_ibu_kandung_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama Ibu
+                            Kandung</label>
+                        <input type="text" id="nama_ibu_kandung_nasabah" name="nama_ibu_kandung"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Untuk verifikasi data" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-6 p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Data Kontak</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="email_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Email</label>
+                        <input type="email" id="email_nasabah" name="email"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="contoh@mail.com" required>
+                    </div>
+                    <div>
+                        <label for="nomor_hp_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nomor HP</label>
+                        <input type="tel" id="nomor_hp_nasabah" name="nomor_hp"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: 0812xxxxxx" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="alamat_ktp_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Alamat Sesuai
+                            KTP</label>
+                        <textarea id="alamat_ktp_nasabah" name="alamat_ktp" rows="2"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota/Kab, Provinsi" required></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Alamat Domisili
+                            (jika berbeda dari KTP)</label>
+                        <textarea id="alamat_domisili_nasabah" name="alamat_domisili" rows="2"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Kosongkan jika sama dengan KTP"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-6 p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Pekerjaan & Keuangan</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="pekerjaan_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Pekerjaan</label>
+                        <input type="text" id="pekerjaan_nasabah" name="pekerjaan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: Karyawan Swasta" required>
+                    </div>
+                    <div>
+                        <label for="penghasilan_bulanan_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Penghasilan
+                            Bulanan (Rp)</label>
+                        <input type="number" id="penghasilan_bulanan_nasabah" name="penghasilan_bulanan"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            min="0" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="sumber_dana_nasabah"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Sumber
+                            Dana</label>
+                        <input type="text" id="sumber_dana_nasabah" name="sumber_dana"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: Gaji, Hasil Usaha, Warisan" required>
+                        <p class="text-xs text-gray-500 mt-1">Penting untuk kepatuhan syariah dan regulasi APU PPT.</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="tujuan_hubungan_bank"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tujuan Hubungan
+                            dengan Bank</label>
+                        <textarea id="tujuan_hubungan_bank" name="tujuan_hubungan_bank" rows="2"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            placeholder="Contoh: Tabungan gaji, investasi, pembiayaan rumah" required></textarea>
+                        <p class="text-xs text-gray-500 mt-1">Tujuan utama nasabah berhubungan dengan Bank Syariah.</p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-6 p-4 border border-gray-200 rounded-md">
+                <legend class="text-lg font-semibold text-[var(--admin-text-dark)] px-2">Dokumen Pendukung</legend>
+                <div class="space-y-4">
+                    <div>
+                        <label for="upload_ktp"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Unggah Scan
+                            KTP</label>
+                        <input type="file" id="upload_ktp" name="upload_ktp" accept="image/*,.pdf"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required>
+                    </div>
+                    <div>
+                        <label for="upload_npwp"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Unggah Scan NPWP
+                            (jika ada)</label>
+                        <input type="file" id="upload_npwp" name="upload_npwp" accept="image/*,.pdf"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]">
+                    </div>
+                    <div>
+                        <label for="upload_kk"
+                            class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Unggah Scan Kartu
+                            Keluarga</label>
+                        <input type="file" id="upload_kk" name="upload_kk" accept="image/*,.pdf"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                            required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-nasabah-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Simpan
+                    Nasabah</button>
+            </div>
+        </form>
+    </div>
+</div>

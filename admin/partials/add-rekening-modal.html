@@ -1,0 +1,82 @@
+<div id="add-rekening-modal"
+    class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001]">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]" id="rekening-modal-title">Buka Rekening Baru
+        </h2>
+        <form id="rekening-form">
+            <div class="mb-4">
+                <label for="nasabah_id_rekening"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">ID Nasabah / NIK</label>
+                <input type="text" id="nasabah_id_rekening" name="nasabah_id"
+                    placeholder="Cari atau masukkan ID Nasabah/NIK"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                <p class="text-xs text-gray-500 mt-1">Otomatisasi pencarian data nasabah berdasarkan ID/NIK.</p>
+            </div>
+            <div class="mb-4">
+                <label for="nama_nasabah_rekening"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nama Nasabah</label>
+                <input type="text" id="nama_nasabah_rekening" name="nama_nasabah"
+                    class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md" readonly
+                    placeholder="Akan terisi otomatis">
+            </div>
+            <div class="mb-4">
+                <label for="jenis_rekening"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Jenis Rekening</label>
+                <select id="jenis_rekening" name="jenis_rekening"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="">Pilih Jenis Rekening</option>
+                    <option value="wadiah">Simpanan Wadiah (Titipan)</option>
+                    <option value="mudharabah">Simpanan Mudharabah (Bagi Hasil)</option>
+                    <option value="tabungan_haji">Tabungan Haji (Wadiah/Mudharabah)</option>
+                    <option value="deposito_syariah">Deposito Syariah (Mudharabah)</option>
+                </select>
+                <p class="text-xs text-gray-500 mt-1">Pilih akad dasar untuk rekening ini.</p>
+            </div>
+            <div class="mb-4">
+                <label for="akad_rekening"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Akad Rekening</label>
+                <select id="akad_rekening" name="akad_rekening"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="">Pilih Akad</option>
+                    <option value="wadiah_yad_dhamanah">Wadiah Yad Dhamanah</option>
+                    <option value="mudharabah_mutlaqah">Mudharabah Mutlaqah</option>
+                    <option value="mudharabah_muqayyadah">Mudharabah Muqayyadah</option>
+                    <option value="tabungan_haji">Tabungan Haji (Akad Khusus)</option>
+                </select>
+                <p class="text-xs text-gray-500 mt-1">Akad syariah yang mendasari produk rekening.</p>
+            </div>
+            <div class="mb-4">
+                <label for="setoran_awal"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Setoran Awal (Rp)</label>
+                <input type="number" id="setoran_awal" name="setoran_awal"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required min="100000">
+            </div>
+            <div class="mb-4">
+                <label for="tujuan_pembukaan_rekening"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tujuan Pembukaan
+                    Rekening</label>
+                <textarea id="tujuan_pembukaan_rekening" name="tujuan_pembukaan" rows="2"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    placeholder="Contoh: Tabungan gaji, investasi, dana darurat" required></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="tanggal_pembukaan"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Tanggal Pembukaan</label>
+                <input type="date" id="tanggal_pembukaan" name="tanggal_pembukaan"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-rekening-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Buka
+                    Rekening</button>
+            </div>
+        </form>
+    </div>
+</div>

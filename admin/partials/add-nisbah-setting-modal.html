@@ -1,0 +1,65 @@
+<div id="add-nisbah-setting-modal"
+    class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[1001] modal">
+    <div class="bg-[var(--admin-surface-white)] p-8 rounded-lg shadow-xl w-full max-w-md modal-content">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--admin-text-dark)]" id="nisbah-modal-title">Atur Nisbah Produk
+        </h2>
+        <form id="nisbah-setting-form">
+            <div class="mb-4">
+                <label for="produk_nisbah"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Pilih Produk</label>
+                <select id="produk_nisbah" name="produk_nisbah"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                    <option value="">Pilih Produk Keuangan</option>
+                    <option value="Tabungan Mudharabah">Tabungan Mudharabah</option>
+                    <option value="Deposito Mudharabah 1 Bulan">Deposito Mudharabah 1 Bulan</option>
+                    <option value="Deposito Mudharabah 3 Bulan">Deposito Mudharabah 3 Bulan</option>
+                    <option value="Deposito Mudharabah 6 Bulan">Deposito Mudharabah 6 Bulan</option>
+                    <option value="Deposito Mudharabah 12 Bulan">Deposito Mudharabah 12 Bulan</option>
+                    <option value="Pembiayaan Musyarakah">Pembiayaan Musyarakah</option>
+                    <option value="Pembiayaan Mudharabah">Pembiayaan Mudharabah</option>
+                    <option value="Investasi Sukuk Ritel">Investasi Sukuk Ritel</option>
+                </select>
+                <p class="text-xs text-gray-500 mt-1">Produk yang dikenakan mekanisme bagi hasil/margin.</p>
+            </div>
+            <div class="mb-4">
+                <label for="periode_nisbah"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Periode Berlaku</label>
+                <input type="month" id="periode_nisbah" name="periode_nisbah"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    required>
+                <p class="text-xs text-gray-500 mt-1">Bulan dan Tahun berlakunya nisbah ini.</p>
+            </div>
+            <div class="mb-4">
+                <label for="nisbah_nasabah"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nisbah Nasabah (%)</label>
+                <input type="number" id="nisbah_nasabah" name="nisbah_nasabah"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    min="0" max="100" step="0.01" placeholder="Contoh: 70.00" required>
+                <p class="text-xs text-gray-500 mt-1">Persentase bagi hasil untuk nasabah. Contoh: 70%.</p>
+            </div>
+            <div class="mb-4">
+                <label for="nisbah_bank"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Nisbah Bank (%)</label>
+                <input type="number" id="nisbah_bank" name="nisbah_bank"
+                    class="w-full p-2 bg-gray-100 border border-gray-300 rounded-md" readonly
+                    placeholder="Akan terisi otomatis">
+                <p class="text-xs text-gray-500 mt-1">Persentase bagi hasil untuk bank (100% - Nisbah Nasabah).</p>
+            </div>
+            <div class="mb-4">
+                <label for="keterangan_nisbah"
+                    class="block text-sm font-medium text-[var(--admin-text-secondary)] mb-1">Keterangan</label>
+                <textarea id="keterangan_nisbah" name="keterangan_nisbah" rows="2"
+                    class="w-full p-2 border border-gray-300 rounded-md focus:ring-[var(--admin-primary-light)] focus:border-[var(--admin-primary-light)]"
+                    placeholder="Catatan internal terkait penetapan nisbah"></textarea>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button type="button" id="close-nisbah-setting-modal"
+                    class="px-4 py-2 bg-gray-200 text-[var(--admin-text-dark)] rounded-md hover:bg-gray-300 transition-colors">Batal</button>
+                <button type="submit"
+                    class="px-4 py-2 bg-[var(--admin-primary-light)] text-white rounded-md hover:bg-emerald-700 transition-colors">Simpan
+                    Pengaturan</button>
+            </div>
+        </form>
+    </div>
+</div>

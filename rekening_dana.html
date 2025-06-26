@@ -1,0 +1,78 @@
+<section class="max-w-[1200px]">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Detail Rekening Dana Anda</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="widget-card">
+            <h3 class="widget-title text-xl">Rekening Wadiah (Giro)</h3>
+            <p class="text-sm text-gray-500">Saldo Tersedia</p>
+            <p class="text-3xl font-bold text-[var(--color-primary-green)] mb-4">Rp 12.500.000</p>
+            <p class="text-sm text-gray-600">No. Rekening: 1234 5678 9012</p>
+            <p class="text-sm text-gray-600 mb-4">Mata Uang: IDR</p>
+            <a href="#" class="text-sm font-medium text-[var(--color-primary-green)] hover:underline">Riwayat Transaksi
+                Lengkap</a>
+        </div>
+        <div class="widget-card">
+            <h3 class="widget-title text-xl">Simpanan Mudharabah</h3>
+            <p class="text-sm text-gray-500">Total Saldo Investasi</p>
+            <p class="text-3xl font-bold text-[var(--color-chart-simpanan-mudharabah)] mb-4">Rp 25.000.000</p>
+            <p class="text-sm text-gray-600">Nisbah Bagi Hasil: 60:40</p>
+            <p class="text-sm text-gray-600 mb-4">Jatuh Tempo Berikutnya: 01 Juli 2025</p>
+            <a href="#" class="text-sm font-medium text-[var(--color-primary-green)] hover:underline">Detail Bagi
+                Hasil</a>
+        </div>
+        <div class="widget-card col-span-1 md:col-span-2 lg:col-span-1">
+            <h3 class="widget-title text-xl">Pembukaan Rekening Baru</h3>
+            <p class="text-gray-600 mb-4">Ajukan pembukaan rekening tabungan, giro, atau simpanan berjangka syariah
+                secara online.</p>
+            <button
+                class="bg-[var(--color-primary-green)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">Buka
+                Rekening Baru</button>
+        </div>
+    </div>
+
+    <div class="widget-card mt-6">
+        <h3 class="widget-title">Grafik Aliran Dana</h3>
+        <div class="h-80">
+            <canvas id="rekeningDanaFlowChart"></canvas>
+        </div>
+    </div>
+
+    <div class="widget-card mt-6">
+        <h3 class="widget-title">Riwayat Transaksi Terkini</h3>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Tanggal</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Deskripsi</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Jenis</th>
+                        <th class="py-3 px-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                        <td class="py-3 px-4 whitespace-nowrap">10 Jun 2025</td>
+                        <td class="py-3 px-4">Setoran Tunai via Teller</td>
+                        <td class="py-3 px-4">Setoran</td>
+                        <td class="py-3 px-4 text-right text-[var(--color-positive)] font-semibold">+Rp 5.000.000</td>
+                    </tr>
+                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                        <td class="py-3 px-4 whitespace-nowrap">08 Jun 2025</td>
+                        <td class="py-3 px-4">Penarikan ATM</td>
+                        <td class="py-3 px-4">Penarikan</td>
+                        <td class="py-3 px-4 text-right text-[var(--color-negative)] font-semibold">-Rp 500.000</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-3 px-4 whitespace-nowrap">05 Jun 2025</td>
+                        <td class="py-3 px-4">Pembayaran Tagihan Listrik</td>
+                        <td class="py-3 px-4">Pembayaran</td>
+                        <td class="py-3 px-4 text-right text-[var(--color-negative)] font-semibold">-Rp 250.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

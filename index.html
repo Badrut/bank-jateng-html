@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Portofolio Nasabah - Bank Syariah Amanah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Tailwind CSS Configuration for Custom Colors & Fonts */
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        :root {
+            /* Bank Jateng Syariah Palette - Disesuaikan kembali ke tema hijau-gold kita */
+            --color-primary-green: #001f3f; /* Dark Emerald Green - Mirip hijau logo */
+            --color-primary-light: #001f5f; /* Light Emerald Green - Untuk aksen lebih cerah */
+            --color-accent-gold: #F59E0B; /* Golden Yellow - Untuk aksen kuat */
+
+            /* Backgrounds & Surfaces */
+            --color-bg-light: #F9FAFB; /* Light Gray Background */
+            --color-surface: #FFFFFF; /* White Card/Widget Background */
+
+            /* Text Colors */
+            --color-text-dark: #1F2937; /* Dark Gray for primary text */
+            --color-text-medium: #4B5563; /* Medium Gray for secondary text */
+            --color-text-soft: #6B7280; /* Softer text color for minimalist look (dari chart-text-soft) */
+
+            /* Borders */
+            --color-border: #E5E7EB; /* Light Border */
+            --color-border-light: #F3F4F6; /* Even lighter border for subtle grids */
+
+            /* Status Colors */
+            --color-positive: #ffd700; /* Strong Green for positive indicators */
+            --color-negative: #DC2626; /* Strong Red for negative indicators */
+
+            /* Chart Specific Colors - Disesuaikan agar lebih harmonis dengan tema hijau-gold */
+            --color-chart-simpanan-wadiah: #047857;     /* Dark Green (Primary) */
+            --color-chart-simpanan-mudharabah: #10B981; /* Default Tailwind Green-500, brighter green */
+            --color-chart-pembiayaan-murabahah: #F59E0B; /* Golden Yellow (Accent) */
+            --color-chart-pembiayaan-ijarah: #EAB308;   /* Darker Yellow/Amber */
+            --color-chart-investasi-sukuk: #3B82F6;     /* Blue (for contrast) */
+            --color-chart-kartu-pembiayaan: #8B5CF6;     /* Purple (for contrast) */
+            --color-chart-zakat: #D97706;               /* Dark Orange */
+            --color-chart-infaq: #FBBF24;               /* Light Orange */
+
+            /* Warna Sidebar & Navbar (Dari permintaan terakhir Anda) */
+            --color-sidebar-bg: #001f3f; /* Biru tua sangat gelap */
+            --color-sidebar-text: #F9FAFB; /* Putih/abu-abu sangat terang untuk teks di sidebar */
+            --color-sidebar-hover-bg: rgba(255, 255, 255, 0.1); /* Hover transparan putih */
+            --color-sidebar-active-bg: rgba(255, 255, 255, 0.2); /* Active transparan putih */
+
+            --color-navbar-bg: var(--color-chart-pembiayaan-murabahah); /* Oranye/Amber terang, dari tema chart */
+            --color-navbar-text: var(--color-text-dark); /* Teks gelap agar kontras di latar terang */
+            --color-navbar-border: rgba(0, 0, 0, 0.1); /* Border tipis hitam transparan */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-bg-light);
+            color: var(--color-text-dark);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .dashboard-logo {
+            font-family: 'Inter', sans-serif;
+            /* Changed to Inter */
+        }
+
+        /* Utility Classes for this specific dashboard */
+        .widget-card {
+            background-color: var(--color-surface);
+            border-radius: 1.25rem;
+            /* 20px */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 2.2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+
+        .widget-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .widget-title {
+            font-size: 1.35rem;
+            /* ~22px */
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: var(--color-surface);
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        .dashboard-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary-green);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .dashboard-logo i {
+            margin-right: 0.75rem;
+            font-size: 2.2rem;
+            color: var(--color-primary-green);
+        }
+
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            width: calc(100% - 2rem);
+            padding: 0.9rem 1.5rem;
+            margin-bottom: 0.6rem;
+            border-radius: 0.75rem;
+            color: #ffffffc5;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .sidebar-nav-item:hover {
+            background-color: #ffffff;
+            /* Lightest green */
+            color: var(--color-primary-green);
+            transform: translateX(5px);
+        }
+
+        .sidebar-nav-item.active {
+            background-color: white;
+            color: var(--color-primary-green);
+        }
+
+        .sidebar-nav-item i {
+            margin-right: 1rem;
+            font-size: 1.35rem;
+        }
+
+        /* Header Specific */
+        .dashboard-header {
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-bar input {
+            padding: 0.75rem 1.25rem 0.75rem 2.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem;
+            font-size: 0.9rem;
+            width: 250px;
+            background-color: var(--color-surface);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        .search-bar input:focus {
+            border-color: var(--color-primary-green);
+            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
+            outline: none;
+        }
+
+        .search-bar i {
+            left: 0.9rem;
+            color: var(--color-text-medium);
+        }
+
+        .profile-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-primary-green);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Widget specific styles (reused by components) */
+        .portfolio-summary-card {
+            background: linear-gradient(135deg, var(--color-primary-green) 0%, var(--color-primary-light) 100%);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-summary-card::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        .portfolio-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .portfolio-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .transaction-item {
+            display: flex;
+            align-items: center;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-icon-wrapper {
+            background-color: #E6FFFA;
+            /* Lightest emerald */
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .transaction-icon-wrapper i {
+            color: var(--color-primary-green);
+            font-size: 1.15rem;
+        }
+
+        .transaction-icon-wrapper.setoran {
+            background-color: #D1FAE5;
+        }
+
+        /* light green */
+        .transaction-icon-wrapper.setoran i {
+            color: var(--color-positive);
+        }
+
+        .transaction-icon-wrapper.pencairan {
+            background-color: #FEE2E2;
+        }
+
+        /* Light red */
+        .transaction-icon-wrapper.pencairan i {
+            color: var(--color-negative);
+        }
+
+        .transaction-icon-wrapper.pembayaran {
+            background-color: #EFF6FF;
+        }
+
+        /* Light blue */
+        .transaction-icon-wrapper.pembayaran i {
+            color: #3B82F6;
+        }
+
+        .transaction-icon-wrapper.bagi-hasil {
+            background-color: #FFFBEB;
+        }
+
+        .transaction-icon-wrapper.bagi-hasil i {
+            color: var(--color-accent-gold);
+        }
+
+        .transaction-info {
+            flex-grow: 1;
+        }
+
+        .transaction-description {
+            font-weight: 500;
+            color: var(--color-text-dark);
+            font-size: 0.95rem;
+        }
+
+        .transaction-date {
+            font-size: 0.8rem;
+            color: var(--color-text-medium);
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .transaction-amount.positive {
+            color: var(--color-positive);
+        }
+
+        .transaction-amount.negative {
+            color: var(--color-negative);
+        }
+
+
+        .nisbah-item {
+            border-bottom: 1px dashed var(--color-border);
+            padding-bottom: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .nisbah-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .nisbah-label {
+            font-size: 0.85rem;
+            color: var(--color-text-medium);
+        }
+
+        .nisbah-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-primary-green);
+        }
+
+        .nisbah-percentage {
+            font-size: 0.9rem;
+            color: var(--color-positive);
+            font-weight: 500;
+        }
+
+        .nisbah-estimation {
+            font-size: 0.8rem;
+            color: var(--color-text-medium);
+            margin-top: 0.2rem;
+        }
+
+        .notification-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-icon {
+            color: var(--color-primary-green);
+            margin-right: 0.75rem;
+        }
+
+        .notification-title {
+            font-weight: 500;
+            color: var(--color-text-dark);
+        }
+
+        .notification-date {
+            font-size: 0.75rem;
+            color: var(--color-text-medium);
+            margin-left: auto;
+        }
+
+        .notification-message {
+            font-size: 0.85rem;
+            color: var(--color-text-medium);
+        }
+
+
+        #portfolioDistributionChart,
+        #nisbahHistoryChart,
+        #transactionFlowChart,
+        #rekeningDanaFlowChart,
+        #investasiKinerjaChart,
+        #simpananBerjangkaChart {
+            height: 280px;
+            /* Consistent height for charts */
+        }
+
+        .chart-legend-item {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: var(--color-text-medium);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 80px;
+                padding: 1.5rem 0;
+            }
+
+            .dashboard-logo {
+                padding: 0;
+                justify-content: center;
+            }
+
+            .dashboard-logo span {
+                display: none;
+            }
+
+            .sidebar-nav-item {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 0.5rem;
+                padding: 0.8rem 1.2rem;
+                justify-content: center;
+                border-radius: 50%;
+            }
+
+            .sidebar-nav-item i {
+                margin-right: 0;
+            }
+
+            .sidebar-nav-item span {
+                display: none;
+            }
+
+            .sidebar-nav-item.active {
+                border-radius: 50%;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .search-bar {
+                order: 1;
+                flex-grow: 1;
+                width: 100%;
+            }
+
+            .search-bar input {
+                width: 100%;
+            }
+
+            .profile-img {
+                order: 4;
+                margin-left: 0.75rem;
+            }
+
+            .header-controls>div:nth-child(2),
+            .header-controls>div:nth-child(3) {
+                order: 2;
+                /* Adjust order for other buttons */
+            }
+
+            .grid-cols-1.lg\:grid-cols-3>div {
+                grid-column: span 1 / span 1 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 0.75rem 0;
+                overflow-x: auto;
+            }
+
+            .dashboard-logo {
+                display: none;
+            }
+
+            .sidebar-nav-item {
+                width: 55px;
+                height: 55px;
+                padding: 0.5rem;
+                flex-shrink: 0;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .dashboard-header {
+                padding-top: 1rem;
+            }
+
+            .header-title {
+                font-size: 1.75rem;
+            }
+
+            .header-controls {
+                justify-content: flex-end;
+                gap: 0.75rem;
+            }
+
+            .profile-img {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<aside class="sidebar" style="background-color: #001f3f;">
+    <div class="dashboard-logo">
+        <img class="h-full" src="https://syariah.bankjateng.co.id/media/LOGO_SYARIAH-04.png" alt="Logo Bank Jateng">
+    </div>
+    <nav class="flex flex-col w-full px-4" ">
+        <a href="#" class="sidebar-nav-item active" data-section="beranda" data-title="Beranda">
+            <i class="fas fa-home"></i> <span>Beranda</span>
+        </a>
+        <a href="#" class="sidebar-nav-item" data-section="rekening_dana" data-title="Rekening Dana">
+            <i class="fas fa-wallet"></i> <span>Rekening Dana</span>
+        </a>
+        <a href="#" class="sidebar-nav-item" data-section="pembiayaan" data-title="Pembiayaan">
+            <i class="fas fa-handshake"></i> <span>Pembiayaan</span>
+        </a>
+        <a href="#" class="sidebar-nav-item" data-section="investasi_syariah" data-title="Investasi"> <i
+                class="fas fa-chart-line"></i> <span>Investasi</span>
+        </a>
+        <a href="#" class="sidebar-nav-item" data-section="kartu_syariah" data-title="Kartu Syariah">
+            <i class="fas fa-credit-card"></i> <span>Kartu Syariah</span>
+        </a>
+        <a href="#" class="sidebar-nav-item" data-section="simpanan_berjangka" data-title="Simpanan Berjangka">
+            <i class="fas fa-piggy-bank"></i> <span>Simpanan Berjangka</span> </a>
+        <a href="#" class="sidebar-nav-item" data-section="notifikasi" data-title="Notifikasi">
+            <i class="fas fa-bell"></i> <span>Notifikasi</span>
+        </a>
+        <a href="#" class="sidebar-nav-item" data-section="pengaturan" data-title="Pengaturan">
+            <i class="fas fa-cogs"></i> <span>Pengaturan</span>
+        </a>
+    </nav>
+</aside>
+
+    <main class="flex-grow p-8 lg:p-12 main-content">
+        <header class="dashboard-header" >
+            <h1 class="header-title" id="currentSectionTitle">Ringkasan Portofolio Nasabah</h1>
+            <div class="header-controls">
+                <div class="search-bar relative">
+                    <i class="fas fa-search absolute top-1/2 -translate-y-1/2 text-gray-500"></i>
+                    <input type="text" placeholder="Cari layanan..." class="w-full">
+                </div>
+                <div class="relative">
+                    <div
+                        class="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-cog text-xl text-gray-600"></i>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div
+                        class="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
+                        <i class="fas fa-bell text-xl text-gray-600"></i>
+                        <span
+                            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">3</span>
+                    </div>
+                </div>
+                <img src="./WhatsApp Image 2025-06-13 at 15.45.44.jpeg" alt="Profil Pengguna"
+                    class="profile-img">
+            </div>
+        </header>
+
+        <div id="content-container">
+        </div>
+
+    </main>
+
+    <script>
+        // Set up CSS variables for JS access
+        const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+        // Global Chart.js configuration
+        Chart.defaults.font.family = 'Poppins';
+        Chart.defaults.font.size = 12;
+        Chart.defaults.color = getCssVar('--color-chart-text-soft'); // Softer chart text color
+        Chart.register(ChartDataLabels);
+
+        // Global animation settings for Chart.js for smoothness
+        Chart.defaults.animation = {
+            duration: 800, // milliseconds
+            easing: 'easeOutQuart' // Smooth easing function
+        };
+        // Also apply to tooltip for smoother appearance
+        Chart.defaults.plugins.tooltip = {
+            animation: {
+                duration: 200, // Quicker tooltip animation
+                easing: 'easeOutCubic'
+            },
+            padding: 10,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)', // Darker tooltip for better contrast
+            borderColor: 'rgba(255, 255, 255, 0.2)',
+            borderWidth: 1,
+            borderRadius: 6,
+            displayColors: false, // Don't display color boxes in tooltip
+            titleFont: { weight: '600' },
+            bodyFont: { weight: '500' }
+        };
+
+
+        // Helper function for IDR formatting
+        const formatRupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(number);
+        };
+
+        // --- DUMMY DATA (Syariah-centric) ---
+        // These are global because charts might need them
+        const nasabahPortfolioData = {
+            saldoWadiah: 12500000, // Rekening Dana (Giro)
+            simpananMudharabah: 25000000, // Simpanan Berjangka (Mudharabah)
+            investasiSukuk: 18000000, // Investasi Syariah
+            pembiayaanMurabahah: 10000000, // Kewajiban Pembiayaan (Sisa Outstanding)
+            kartuPembiayaanUsage: 2500000 // Pemakaian dari Kartu Pembiayaan Syariah
+        };
+
+        const portfolioDistributionChartData = {
+            labels: ['Rek. Dana Wadiah', 'Simpanan Berjangka', 'Investasi Syariah', 'Pembiayaan Murabahah', 'Kartu Pembiayaan'],
+            datasets: [{
+                data: [
+                    nasabahPortfolioData.saldoWadiah,
+                    nasabahPortfolioData.simpananMudharabah,
+                    nasabahPortfolioData.investasiSukuk,
+                    nasabahPortfolioData.pembiayaanMurabahah, // Representing total liability as part of portfolio overview
+                    nasabahPortfolioData.kartuPembiayaanUsage
+                ],
+                backgroundColor: [
+                    getCssVar('--color-chart-simpanan-wadiah'),
+                    getCssVar('--color-chart-simpanan-mudharabah'),
+                    getCssVar('--color-chart-investasi-sukuk'),
+                    getCssVar('--color-chart-pembiayaan-murabahah'),
+                    getCssVar('--color-chart-kartu-pembiayaan')
+                ],
+                hoverOffset: 10,
+                borderWidth: 2,
+                borderColor: getCssVar('--color-surface')
+            }]
+        };
+
+        const nisbahHistoryData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni'],
+            datasets: [
+                {
+                    label: 'Simpanan Mudharabah',
+                    data: [0.7, 0.8, 0.75, 0.82, 0.78, 0.85], // as percentage
+                    borderColor: getCssVar('--color-chart-simpanan-mudharabah'),
+                    backgroundColor: 'rgba(13, 148, 136, 0.1)',
+                    fill: true,
+                    tension: 0.4, // Smoother line
+                    pointBackgroundColor: getCssVar('--color-chart-simpanan-mudharabah'),
+                    pointBorderColor: getCssVar('--color-surface'),
+                    pointRadius: 4, // Smaller points
+                    pointHoverRadius: 8
+                },
+                {
+                    label: 'Investasi Sukuk',
+                    data: [1.1, 1.2, 1.15, 1.3, 1.25, 1.4], // as percentage
+                    borderColor: getCssVar('--color-chart-investasi-sukuk'),
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4, // Smoother line
+                    pointBackgroundColor: getCssVar('--color-chart-investasi-sukuk'),
+                    pointBorderColor: getCssVar('--color-surface'),
+                    pointRadius: 4, // Smaller points
+                    pointHoverRadius: 8
+                }
+            ]
+        };
+
+        const transactionFlowData = {
+            labels: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'],
+            datasets: [
+                {
+                    label: 'Pemasukan',
+                    data: [5000000, 3000000, 4500000, 6000000],
+                    backgroundColor: getCssVar('--color-positive'),
+                    borderRadius: 8, // Rounded bars
+                    categoryPercentage: 0.7, // Space between categories
+                    barPercentage: 0.8 // Width of individual bars
+                },
+                {
+                    label: 'Pengeluaran',
+                    data: [2000000, 1500000, 3000000, 2500000],
+                    backgroundColor: getCssVar('--color-negative'),
+                    borderRadius: 8, // Rounded bars
+                    categoryPercentage: 0.7,
+                    barPercentage: 0.8
+                }
+            ]
+        };
+
+        // NEW DUMMY DATA FOR NEW SECTIONS
+        const rekeningDanaFlowData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni'],
+            datasets: [{
+                label: 'Setoran',
+                data: [5000000, 3000000, 7000000, 4000000, 6000000, 5500000],
+                backgroundColor: getCssVar('--color-positive'),
+                borderColor: getCssVar('--color-positive'),
+                fill: false,
+                tension: 0.4
+            }, {
+                label: 'Penarikan',
+                data: [1000000, 2000000, 2500000, 1500000, 3000000, 2000000],
+                backgroundColor: getCssVar('--color-negative'),
+                borderColor: getCssVar('--color-negative'),
+                fill: false,
+                tension: 0.4
+            }]
+        };
+
+        const investasiKinerjaData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni'],
+            datasets: [{
+                label: 'Imbal Hasil (%)',
+                data: [0.5, 0.7, 0.6, 0.8, 0.75, 0.9],
+                borderColor: getCssVar('--color-chart-investasi-sukuk'),
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                fill: true,
+                tension: 0.4
+            }]
+        };
+
+        const simpananBerjangkaData = {
+            labels: ['2023', '2024', 'Juni 2025'],
+            datasets: [{
+                label: 'Total Dana Terkumpul',
+                data: [10000000, 18000000, 25000000],
+                backgroundColor: getCssVar('--color-chart-simpanan-mudharabah'),
+                borderColor: getCssVar('--color-chart-simpanan-mudharabah'),
+                fill: false,
+                tension: 0.4
+            }]
+        };
+
+
+        // --- Functions to Render UI & Charts (These functions will be called after content is loaded) ---
+
+        function updatePortfolioSummary() {
+            const totalAset = nasabahPortfolioData.saldoWadiah +
+                nasabahPortfolioData.simpananMudharabah +
+                nasabahPortfolioData.investasiSukuk;
+
+            const totalPortfolioValueElement = document.getElementById('totalPortfolioValue');
+            const saldoWadiahElement = document.getElementById('saldoWadiah');
+
+            if (totalPortfolioValueElement) {
+                totalPortfolioValueElement.textContent = formatRupiah(totalAset);
+            }
+            if (saldoWadiahElement) {
+                saldoWadiahElement.textContent = formatRupiah(nasabahPortfolioData.saldoWadiah);
+            }
+        }
+
+        function renderPortfolioDistributionChart() {
+            const ctx = document.getElementById('portfolioDistributionChart');
+            if (!ctx) return; // Exit if canvas not found
+            if (Chart.getChart('portfolioDistributionChart')) {
+                Chart.getChart('portfolioDistributionChart').destroy();
+            }
+            new Chart(ctx.getContext('2d'), {
+                type: 'doughnut',
+                data: portfolioDistributionChartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '75%', // Increased cutout for more modern look
+                    plugins: {
+                        legend: { display: false }, // Using custom HTML legend
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed !== null) {
+                                        const total = context.dataset.data.reduce((sum, val) => sum + val, 0);
+                                        const percentage = ((context.parsed / total) * 100).toFixed(1);
+                                        label += formatRupiah(context.parsed) + ' (' + percentage + '%)';
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                        datalabels: {
+                            color: '#fff',
+                            font: {
+                                weight: 'bold',
+                                size: 12
+                            },
+                            formatter: (value, context) => {
+                                const total = context.dataset.data.reduce((sum, val) => sum + val, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return percentage > 5 ? percentage + '%' : ''; // Only show if significant enough
+                            },
+                            anchor: 'end',
+                            align: 'start',
+                            offset: 8,
+                            backgroundColor: (context) => context.dataset.backgroundColor[context.dataIndex],
+                            borderColor: getCssVar('--color-surface'),
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            padding: { top: 4, bottom: 4, left: 6, right: 6 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // NOTE: nisbahHistoryChart is NOT used in Beranda component,
+        // but keeping the function here in case it's needed elsewhere or moved later.
+        function renderNisbahHistoryChart() {
+            const ctx = document.getElementById('nisbahHistoryChart');
+            if (!ctx) return;
+            if (Chart.getChart('nisbahHistoryChart')) {
+                Chart.getChart('nisbahHistoryChart').destroy();
+            }
+            new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: nisbahHistoryData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                color: getCssVar('--color-chart-text-soft')
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Nisbah (%)',
+                                color: getCssVar('--color-chart-text-soft')
+                            },
+                            ticks: {
+                                callback: function (value) {
+                                    return value + '%';
+                                },
+                                color: getCssVar('--color-chart-text-soft')
+                            },
+                            grid: {
+                                color: getCssVar('--color-border-light'),
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: getCssVar('--color-chart-text-soft')
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderTransactionFlowChart() {
+            const ctx = document.getElementById('transactionFlowChart');
+            if (!ctx) return;
+            if (Chart.getChart('transactionFlowChart')) {
+                Chart.getChart('transactionFlowChart').destroy();
+            }
+            new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: transactionFlowData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.dataset.label + ': ' + formatRupiah(context.parsed.y);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                display: false // No horizontal grid lines
+                            },
+                            ticks: {
+                                callback: function (value) {
+                                    if (value >= 1000000) return formatRupiah(value / 1000000) + ' Jt';
+                                    if (value >= 1000) return formatRupiah(value / 1000) + ' Rb';
+                                    return formatRupiah(value);
+                                },
+                                color: getCssVar('--color-chart-text-soft')
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false // No vertical grid lines
+                            },
+                            ticks: {
+                                color: getCssVar('--color-chart-text-soft')
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // NEW CHART RENDERING FUNCTIONS FOR NEW SECTIONS
+        function renderRekeningDanaFlowChart() {
+            const ctx = document.getElementById('rekeningDanaFlowChart');
+            if (!ctx) return;
+            if (Chart.getChart('rekeningDanaFlowChart')) {
+                Chart.getChart('rekeningDanaFlowChart').destroy();
+            }
+            new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: rekeningDanaFlowData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                color: getCssVar('--color-chart-text-soft')
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.dataset.label + ': ' + formatRupiah(context.parsed.y);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    if (value >= 1000000) return formatRupiah(value / 1000000) + ' Jt';
+                                    return formatRupiah(value);
+                                },
+                                color: getCssVar('--color-chart-text-soft')
+                            },
+                            grid: {
+                                color: getCssVar('--color-border-light'),
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: getCssVar('--color-chart-text-soft') }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderInvestasiKinerjaChart() {
+            const ctx = document.getElementById('investasiKinerjaChart');
+            if (!ctx) return;
+            if (Chart.getChart('investasiKinerjaChart')) {
+                Chart.getChart('investasiKinerjaChart').destroy();
+            }
+            new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: investasiKinerjaData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                color: getCssVar('--color-chart-text-soft')
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) { return value + '%'; },
+                                color: getCssVar('--color-chart-text-soft')
+                            },
+                            title: {
+                                display: true,
+                                text: 'Imbal Hasil (%)',
+                                color: getCssVar('--color-chart-text-soft')
+                            },
+                            grid: {
+                                color: getCssVar('--color-border-light'),
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: getCssVar('--color-chart-text-soft') }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderSimpananBerjangkaChart() {
+            const ctx = document.getElementById('simpananBerjangkaChart');
+            if (!ctx) return;
+            if (Chart.getChart('simpananBerjangkaChart')) {
+                Chart.getChart('simpananBerjangkaChart').destroy();
+            }
+            new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: simpananBerjangkaData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                color: getCssVar('--color-chart-text-soft')
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.dataset.label + ': ' + formatRupiah(context.parsed.y);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    if (value >= 1000000) return formatRupiah(value / 1000000) + ' Jt';
+                                    return formatRupiah(value);
+                                },
+                                color: getCssVar('--color-chart-text-soft')
+                            },
+                            title: {
+                                display: true,
+                                text: 'Dana Terkumpul',
+                                color: getCssVar('--color-chart-text-soft')
+                            },
+                            grid: {
+                                color: getCssVar('--color-border-light'),
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: getCssVar('--color-chart-text-soft') }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateNisbahSummary() {
+            const estimatedBagiHasilElement = document.getElementById('estimatedBagiHasil');
+            if (estimatedBagiHasilElement) {
+                // Dummy calculation for estimated Bagi Hasil
+                const estimatedBagiHasil = (nasabahPortfolioData.simpananMudharabah * (nisbahHistoryData.datasets[0].data[nisbahHistoryData.datasets[0].data.length - 1] / 100)) +
+                    (nasabahPortfolioData.investasiSukuk * (nisbahHistoryData.datasets[1].data[nisbahHistoryData.datasets[1].data.length - 1] / 100));
+                estimatedBagiHasilElement.textContent = formatRupiah(estimatedBagiHasil);
+            }
+        }
+
+        // --- Sidebar Navigation Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarItems = document.querySelectorAll('.sidebar-nav-item');
+            const contentContainer = document.getElementById('content-container');
+            const currentSectionTitle = document.getElementById('currentSectionTitle');
+
+            const loadContent = async (sectionId, title) => {
+                // Deactivate all sidebar items
+                sidebarItems.forEach(item => item.classList.remove('active'));
+
+                // Activate selected sidebar item
+                const activeItem = document.querySelector(`.sidebar-nav-item[data-section="${sectionId}"]`);
+                if (activeItem) {
+                    activeItem.classList.add('active');
+                }
+
+                currentSectionTitle.textContent = title; // Update header title
+
+                try {
+                    const response = await fetch(`${sectionId}.html`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const html = await response.text();
+                    contentContainer.innerHTML = html;
+
+                    // After content is loaded, re-render charts and update specific UI elements
+                    switch (sectionId) {
+                        case 'beranda':
+                            updatePortfolioSummary();
+                            updateNisbahSummary();
+                            renderPortfolioDistributionChart();
+                            renderTransactionFlowChart();
+                            break;
+                        case 'rekening_dana':
+                            renderRekeningDanaFlowChart();
+                            break;
+                        case 'investasi_syariah':
+                            renderInvestasiKinerjaChart();
+                            break;
+                        case 'simpanan_berjangka':
+                            renderSimpananBerjangkaChart();
+                            break;
+                        // Add more cases for other sections if they have specific JS to run
+                        default:
+                            // No specific charts/updates for other sections
+                            break;
+                    }
+
+                } catch (error) {
+                    console.error('Error loading content:', error);
+                    contentContainer.innerHTML = `<div class="text-center text-red-500 p-8">Gagal memuat konten untuk ${title}. Silakan coba lagi.</div>`;
+                }
+            };
+
+            // Add click listeners to sidebar items
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = item.dataset.section;
+                    const sectionTitle = item.dataset.title;
+                    loadContent(sectionId, sectionTitle);
+                });
+            });
+
+            // Load initial content (Beranda) when page loads
+            loadContent('beranda', 'Beranda');
+        });
+    </script>
+</body>
+
+</html>

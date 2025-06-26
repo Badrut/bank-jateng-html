@@ -1,0 +1,299 @@
+<aside id="sidebar" class="sidebar">
+    <div
+        class="sidebar-header p-6 flex items-center justify-center text-white text-2xl font-extrabold border-b border-white/[0.05]">
+        <i class="fas fa-money-check-alt text-[var(--admin-accent-gold)] mr-3 sidebar-icon"></i>
+        <span class="sidebar-text">Admin Panel</span>
+    </div>
+
+    <nav class="sidebar-nav mt-8">
+        <ul>
+            <li>
+                <a href="#dashboard"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="dashboard">
+                    <i class="fas fa-tachometer-alt text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#nasabah"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="nasabah-index">
+                    <i class="fas fa-users text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Manajemen Nasabah</span>
+                </a>
+            </li>
+            <li>
+                <a href="#rekening"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="rekening-index">
+                    <i class="fas fa-university text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Manajemen Rekening</span>
+                </a>
+            </li>
+            <li>
+                <a href="#pembiayaan"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="pembiayaan-index">
+                    <i class="fas fa-hand-holding-usd text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Manajemen Pembiayaan</span>
+                </a>
+            </li>
+            <li>
+                <a href="#investasi"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="investasi-index">
+                    <i class="fas fa-chart-line text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Manajemen Investasi</span>
+                </a>
+            </li>
+            <li>
+                <a href="#transaksi"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="transaksi-index">
+                    <i class="fas fa-exchange-alt text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Riwayat Transaksi</span>
+                </a>
+            </li>
+            <li>
+                <a href="#nisbah"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="nisbah-index">
+                    <i class="fas fa-percent text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Nisbah & Bagi Hasil</span>
+                </a>
+            </li>
+            <li>
+                <a href="#notifikasi"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="notifikasi-index">
+                    <i class="fas fa-bell text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Notifikasi & Pesan</span>
+                </a>
+            </li>
+            <li>
+                <a href="#zakat_infaq"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="zakat-infaq-index">
+                    <i class="fas fa-hand-holding-heart text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Zakat & Infaq</span>
+                </a>
+            </li>
+            <li>
+                <a href="#users_management"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="users-management-index">
+                    <i class="fas fa-user-shield text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Manajemen Pengguna</span>
+                </a>
+            </li>
+            <li>
+                <a href="#settings"
+                    class="flex items-center text-[var(--admin-text-light)] py-3 px-6 rounded-r-full hover:bg-white/[0.1] transition-all duration-200"
+                    data-page="settings-index">
+                    <i class="fas fa-cogs text-lg mr-4 sidebar-icon"></i>
+                    <span class="sidebar-text">Pengaturan</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<div id="main-content" class="main-content flex flex-col w-full  max-w-[1880px]">
+    <header
+        class="bg-[var(--admin-surface-white)] shadow-sm py-4 px-6 sm:px-8 flex items-center justify-between border-b border-[var(--admin-border-light)] sticky top-0 z-50" >
+        <div class="flex items-center">
+            <button id="sidebar-toggle"
+                class="text-[var(--admin-text-secondary)] hover:text-[var(--admin-primary-light)] focus:outline-none hidden lg:block mr-4">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <button id="sidebar-toggle-mobile"
+                class="text-[var(--admin-text-secondary)] hover:text-[var(--admin-primary-light)] focus:outline-none lg:hidden block mr-4">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h1 id="page-title" class="text-2xl font-semibold text-[var(--admin-text-dark)]">Dashboard</h1>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <input type="text" placeholder="Cari..."
+                    class="py-2 pl-10 pr-4 rounded-full border border-[var(--admin-border-light)] focus:border-[var(--admin-primary-light)] focus:ring focus:ring-[var(--admin-primary-light)] focus:ring-opacity-50">
+                <i
+                    class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[var(--admin-text-secondary)]"></i>
+            </div>
+            <button class="text-[var(--admin-text-secondary)] hover:text-[var(--admin-primary-light)] text-xl relative">
+                <i class="fas fa-bell"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">3</span>
+            </button>
+            <div class="flex items-center cursor-pointer group">
+                <img src="https://via.placeholder.com/40" alt="Admin Avatar"
+                    class="w-10 h-10 rounded-full border-2 border-[var(--admin-primary-light)]">
+                <span class="ml-2 font-medium text-[var(--admin-text-dark)] hidden md:block">Admin BJS</span>
+                <i class="fas fa-chevron-down text-xs ml-2 text-[var(--admin-text-secondary)]"></i>
+            </div>
+            <button class="text-[var(--admin-text-secondary)] hover:text-red-500 text-xl" title="Logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="content-container" class="p-6 sm:p-8 flex-grow bg-[var(--admin-bg-light)]">
+    </main>
+</div>
+
+<style>
+    .sidebar {
+        background-color: var(--admin-primary-dark);
+        width: 250px;
+        transition: width 0.3s ease-in-out;
+        flex-shrink: 0;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .sidebar.collapsed {
+        width: 80px;
+    }
+
+    .main-content {
+        margin-left: 250px;
+        transition: margin-left 0.3s ease-in-out;
+        flex-grow: 1;
+    }
+
+    .main-content.sidebar-collapsed {
+        margin-left: 80px;
+    }
+
+    /* Custom scrollbar for sidebar */
+    .sidebar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Gaya untuk menu aktif */
+    .sidebar-nav ul li a.active-menu {
+        background-color: rgba(255, 255, 255, 0.15);
+        font-weight: 600;
+        box-shadow: inset 5px 0 0 var(--admin-accent-gold);
+        color: white;
+    }
+
+    .sidebar-nav ul li a.active-menu .sidebar-icon {
+        color: var(--admin-accent-gold);
+    }
+
+    /* Gaya untuk sidebar yang diciutkan (collapsed) */
+    .sidebar.collapsed .sidebar-icon {
+        margin-right: 0 !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .sidebar.collapsed .sidebar-text {
+        display: none;
+    }
+
+    .sidebar.collapsed .sidebar-header {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .sidebar.collapsed .sidebar-header .sidebar-text {
+        display: none;
+    }
+
+    .sidebar.collapsed .sidebar-header .sidebar-icon {
+        margin-right: 0;
+    }
+
+    /* Untuk tabel */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        min-width: 768px;
+        /* Pastikan tabel tidak terlalu sempit */
+        border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--admin-border-light);
+    }
+
+    .table th {
+        background-color: var(--admin-bg-light);
+        color: var(--admin-text-secondary);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .table tbody tr:hover {
+        background-color: var(--admin-bg-light);
+    }
+
+    /* Animasi Skeleton Loader */
+    .skeleton-line {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+        0% {
+            background-position: 200% 0;
+        }
+
+        100% {
+            background-position: -200% 0;
+        }
+    }
+
+    /* Mobile styles for sidebar */
+    @media (max-width: 1023px) {
+        .sidebar {
+            left: -250px;
+            /* Hide sidebar by default on mobile */
+            width: 250px;
+            /* Full width when active */
+            box-shadow: none;
+        }
+
+        .sidebar.active-mobile {
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-content {
+            margin-left: 0;
+            /* No margin on mobile */
+        }
+
+        .navbar-toggle-mobile {
+            display: block;
+            /* Show hamburger menu on mobile */
+        }
+    }
+</style>
